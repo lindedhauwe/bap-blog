@@ -1,0 +1,24 @@
+---
+import Base from '../../layouts/Base.astro';
+import TagFilter from '../../components/TagFilter.astro';
+import PostList from '../../components/PostList.astro';
+import { TAGS, TAG_KEYS, type Tag } from '../../consts';
+import { getPosts, countTags } from '../../lib';
+
+export function getStaticPaths() {
+  return TAG_KEYS.map((tag) => ({ params: { tag } }));
+}
+
+const tag = Astro.params.tag as Tag;
+const all = await getPosts();
+const posts = all.filter((p) => p.data.tags.includes(tag));
+---
+
+<Base title={TAGS[tag].label}>
+  <div class="container">
+    <h1>{TAGS[tag].label}</h1>
+    <p class="muted">All posts about {TAGS[tag].label.toLowerCase()}, newest first.</p>
+    <TagFilter active={tag} counts={countTags(all)} total={all.length} />
+    <PostList posts={posts} />
+  </div>
+</Base>

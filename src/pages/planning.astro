@@ -1,0 +1,73 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import TagPill from '../components/TagPill.astro';
+import { formatDate } from '../consts';
+
+const phases = (await getCollection('planning')).sort(
+  (a, b) => a.data.start.valueOf() - b.data.start.valueOf(),
+);
+const today = new Date();
+const labels = { todo: 'To do', doing: 'In progress', done: 'Done' };
+---
+
+<Base title="Planning">
+  <div class="container">
+    <h1>Planning</h1>
+    <p class="muted">Our phases, goals and tasks. Updated as the project moves.</p>
+
+    <ol class="phases">
+      {phases.map(({ data }) => {
+        const state = today > data.end ? 'past' : today >= data.start ? 'current' : 'future';
+        const done = data.tasks.filter((t) => t.status === 'done').length;
+        return (
+          <li class:list={['card', state]}>
+            <div class="head">
+              <h2>{data.phase}</h2>
+              {state === 'current' && <span class="now">Now</span>}
+            </div>
+            <p class="muted dates">
+              {formatDate(data.start)} – {formatDate(data.end)} · {done}/{data.tasks.length} done
+            </p>
+            <p>{data.goal}</p>
+            <ul class="tasks">
+              {data.tasks.map((task) => (
+                <li class={task.status}>
+                  <span class="status">{labels[task.status]}</span>
+                  <span class="title">{task.title}</span>
+                  {task.owner && <span class="muted">{task.owner}</span>}
+                  {task.tag && <TagPill tag={task.tag} link={false} />}
+                </li>
+              ))}
+            </ul>
+          </li>
+        );
+      })}
+    </ol>
+  </div>
+</Base>
+
+<style>
+  .phases { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; gap: 1rem; }
+  .phases > li.current { border-color: var(--text); }
+  .phases > li.past { opacity: .7; }
+  .head { display: flex; align-items: center; gap: .75rem; }
+  h2 { margin: 0; font-size: 1.3rem; }
+  .now { font-size: .75rem; font-weight: 700; background: var(--text); color: var(--bg); padding: .1rem .55rem; border-radius: 999px; }
+  .dates { margin: .25rem 0 .5rem; font-size: .9rem; }
+  .tasks { list-style: none; padding: 0; margin: 0; }
+  .tasks li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .4rem .75rem;
+    padding: .5rem 0;
+    border-top: 1px solid var(--border);
+    font-size: .95rem;
+  }
+  .status { font-size: .75rem; font-weight: 600; width: 6.5rem; color: var(--muted); }
+  .doing .status { color: var(--tag-dev); }
+  .done .status { color: var(--tag-feedback); }
+  .done .title { text-decoration: line-through; color: var(--muted); }
+  .title { flex: 1 1 12rem; }
+</style>

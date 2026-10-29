@@ -1,0 +1,64 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatDate, url } from '../consts';
+import TagPill from './TagPill.astro';
+
+interface Props {
+  posts: CollectionEntry<'posts'>[];
+}
+
+const { posts } = Astro.props;
+
+// Group per month so the timeline stays readable as the blog grows.
+const groups = new Map<string, CollectionEntry<'posts'>[]>();
+for (const post of posts) {
+  const key = post.data.date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+  groups.set(key, [...(groups.get(key) ?? []), post]);
+}
+---
+
+{posts.length === 0 && <p class="muted">No posts here yet.</p>}
+
+{[...groups].map(([month, items]) => (
+  <section class="month">
+    <h2>{month}</h2>
+    <ol>
+      {items.map((post) => (
+        <li>
+          <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+          <div>
+            <a class="title" href={url(`posts/${post.id}/`)}>{post.data.title}</a>
+            <p class="muted">{post.data.description}</p>
+            <div class="tags">{post.data.tags.map((tag) => <TagPill tag={tag} />)}</div>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+))}
+
+<style>
+  .month h2 {
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--muted);
+    margin: 2rem 0 .5rem;
+  }
+  ol { list-style: none; margin: 0; padding: 0; }
+  li {
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    gap: 1rem;
+    padding: 1.1rem 0;
+    border-top: 1px solid var(--border);
+  }
+  time { color: var(--muted); font-size: .9rem; padding-top: .15rem; font-variant-numeric: tabular-nums; }
+  .title { font-size: 1.2rem; font-weight: 650; text-decoration: none; }
+  .title:hover { text-decoration: underline; }
+  p { margin: .25rem 0 .6rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: .35rem; }
+  @media (max-width: 560px) {
+    li { grid-template-columns: 1fr; gap: .25rem; }
+  }
+</style>

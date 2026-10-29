@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro';
+import { formatDate, url } from '../consts';
+import { getPosts } from '../lib';
+
+const posts = (await getPosts()).filter((p) => p.data.ai);
+---
+
+<Base title="AI usage">
+  <div class="container">
+    <h1>AI usage</h1>
+    <p class="muted">
+      Every post that involved AI says how we used it and how we judged the output. This page collects those notes in one place.
+    </p>
+    {posts.length === 0 && <p class="muted">No AI usage logged yet.</p>}
+    <ol>
+      {posts.map((post) => (
+        <li class="card">
+          <p class="muted small">{formatDate(post.data.date)}</p>
+          <a href={url(`posts/${post.id}/`)}>{post.data.title}</a>
+          <p>{post.data.ai}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</Base>
+
+<style>
+  ol { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; gap: 1rem; }
+  a { font-weight: 650; font-size: 1.1rem; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .small { font-size: .85rem; margin: 0 0 .25rem; }
+  li p:last-child { margin-bottom: 0; }
+</style>

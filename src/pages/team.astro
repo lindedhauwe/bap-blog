@@ -1,0 +1,34 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+const team = await getCollection('team');
+const hours = await getCollection('hours');
+const totalFor = (name: string) =>
+  hours.filter((h) => h.data.person === name).reduce((sum, h) => sum + h.data.hours, 0);
+---
+
+<Base title="Team">
+  <div class="container">
+    <h1>Team roles</h1>
+    <p class="muted">Who does what. Posts are written together, so they don't have a single author.</p>
+    <div class="grid">
+      {team.map(({ data }) => (
+        <section class="card">
+          <h2>{data.name}</h2>
+          <p class="roles">{data.roles.join(' · ')}</p>
+          <ul>{data.tasks.map((task) => <li>{task}</li>)}</ul>
+          <p class="muted small">{totalFor(data.name)} hours logged</p>
+        </section>
+      ))}
+    </div>
+  </div>
+</Base>
+
+<style>
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; margin-top: 2rem; }
+  h2 { margin: 0; font-size: 1.3rem; }
+  .roles { font-weight: 600; margin: .25rem 0 .75rem; }
+  ul { padding-left: 1.1rem; margin: 0 0 1rem; }
+  .small { font-size: .9rem; margin: 0; }
+</style>

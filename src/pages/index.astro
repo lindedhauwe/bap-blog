@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import TagFilter from '../components/TagFilter.astro';
+import PostList from '../components/PostList.astro';
+import { SITE_DESCRIPTION } from '../consts';
+import { getPosts, countTags } from '../lib';
+
+const posts = await getPosts();
+---
+
+<Base>
+  <div class="container">
+    <h1>Process blog</h1>
+    <p class="muted">{SITE_DESCRIPTION}</p>
+    <TagFilter counts={countTags(posts)} total={posts.length} />
+    <PostList posts={posts} />
+  </div>
+</Base>

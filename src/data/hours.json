@@ -1,0 +1,5 @@
+[
+  { "id": "2026-10-29-linde-1", "date": "2026-10-29", "person": "Linde", "hours": 2, "tag": "development", "task": "Set up the process blog (Astro + GitHub Pages)" },
+  { "id": "2026-10-29-femke-1", "date": "2026-10-29", "person": "Femke", "hours": 1.5, "tag": "ux", "task": "Example entry: replace me" }
+  { "id": "2026-10-29-naomi-1", "date": "2026-10-29", "person": "Naomi", "hours": 1, "tag": "design", "task": "Example entry: replace me" }
+]

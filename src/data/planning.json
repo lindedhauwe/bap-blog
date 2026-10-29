@@ -1,0 +1,25 @@
+[
+  {
+    "id": "kickoff",
+    "phase": "Kick-off & setup",
+    "start": "2026-10-26",
+    "end": "2026-11-04",
+    "goal": "Project defined, blog online, link submitted.",
+    "tasks": [
+      { "title": "Set up process blog", "owner": "Linde", "tag": "development", "status": "doing" },
+      { "title": "Submit blog URL (deadline Wed 4 Nov)", "status": "todo" }
+    ]
+  },
+  {
+    "id": "research",
+    "phase": "Research",
+    "start": "2026-11-05",
+    "end": "2026-11-25",
+    "goal": "Replace with your own phase goal.",
+    "tasks": [
+      { "title": "Example UX research task", "tag": "ux", "status": "todo" },
+      { "title": "Example design exploration", "tag": "design", "status": "todo" },
+      { "title": "Example technical spike", "tag": "development", "status": "todo" }
+    ]
+  }
+]

@@ -1,0 +1,83 @@
+---
+import '../styles/global.css';
+import { SITE_TITLE, SITE_DESCRIPTION, url } from '../consts';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description = SITE_DESCRIPTION } = Astro.props;
+const pageTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
+
+const nav = [
+  { href: url(), label: 'Blog' },
+  { href: url('planning/'), label: 'Planning' },
+  { href: url('hours/'), label: 'Hours' },
+  { href: url('team/'), label: 'Team' },
+  { href: url('ai/'), label: 'AI' },
+];
+const current = Astro.url.pathname.replace(/\/?$/, '/');
+const isActive = (href: string) =>
+  href === url() ? current === href || current.startsWith(url('posts/')) || current.startsWith(url('tags/')) : current.startsWith(href);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href={url('favicon.svg')} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container wide inner">
+        <a class="logo" href={url()}>{SITE_TITLE}</a>
+        <nav>
+          {nav.map((item) => (
+            <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+          ))}
+        </nav>
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="container wide muted">
+      DEVINE · Bachelor thesis {new Date().getFullYear()}
+    </footer>
+  </body>
+</html>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem 1.5rem;
+    padding-block: .9rem;
+  }
+  .logo { font-weight: 700; text-decoration: none; }
+  nav { display: flex; flex-wrap: wrap; gap: .25rem; }
+  nav a {
+    text-decoration: none;
+    padding: .3rem .7rem;
+    border-radius: 999px;
+    font-size: .95rem;
+    color: var(--muted);
+  }
+  nav a:hover { color: var(--text); }
+  nav a[aria-current='page'] { background: var(--text); color: var(--bg); }
+  main { padding-block: 2.5rem 4rem; }
+  footer { padding-block: 2rem; border-top: 1px solid var(--border); font-size: .9rem; }
+</style>

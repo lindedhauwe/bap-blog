@@ -1,0 +1,38 @@
+---
+import { TAGS, url, type Tag } from '../consts';
+
+interface Props {
+  tag: Tag;
+  link?: boolean;
+}
+
+const { tag, link = true } = Astro.props;
+const { label, color } = TAGS[tag];
+const Element = link ? 'a' : 'span';
+---
+
+<Element class="pill" href={link ? url(`tags/${tag}/`) : undefined} style={`--c: ${color}`}>{label}</Element>
+
+<style>
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: .4em;
+    font-size: .8rem;
+    font-weight: 600;
+    padding: .15rem .6rem;
+    border-radius: 999px;
+    color: var(--c);
+    background: color-mix(in srgb, var(--c) 12%, transparent);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .pill::before {
+    content: '';
+    width: .45em;
+    height: .45em;
+    border-radius: 50%;
+    background: var(--c);
+  }
+  a.pill:hover { background: color-mix(in srgb, var(--c) 22%, transparent); }
+</style>

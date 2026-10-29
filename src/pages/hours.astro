@@ -1,0 +1,109 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import TagPill from '../components/TagPill.astro';
+import { TAGS, TAG_KEYS, formatDate } from '../consts';
+
+const entries = (await getCollection('hours'))
+  .map((e) => e.data)
+  .sort((a, b) => b.date.valueOf() - a.date.valueOf());
+
+const sum = (list: typeof entries) => list.reduce((total, e) => total + e.hours, 0);
+const people = [...new Set(entries.map((e) => e.person))];
+const total = sum(entries);
+
+// One row per day, with a column per person.
+const dayKey = (d: Date) => d.toISOString().slice(0, 10);
+const days = [...new Set(entries.map((e) => dayKey(e.date)))].map((day) => {
+  const list = entries.filter((e) => dayKey(e.date) === day);
+  return {
+    day,
+    list,
+    perPerson: people.map((p) => sum(list.filter((e) => e.person === p))),
+    total: sum(list),
+  };
+});
+const maxDay = Math.max(1, ...days.map((d) => d.total));
+
+const perTag = TAG_KEYS.map((key) => ({ key, hours: sum(entries.filter((e) => e.tag === key)) }));
+const fmt = (n: number) => (n ? n.toLocaleString('en-GB', { maximumFractionDigits: 2 }) : '–');
+---
+
+<Base title="Hours">
+  <div class="container wide">
+    <h1>Time tracking</h1>
+    <p class="muted">How many hours we spend on our bachelor thesis, per day and per person.</p>
+
+    <div class="stats">
+      <div class="card"><span class="muted">Total</span><strong>{fmt(total)} h</strong></div>
+      {people.map((p) => (
+        <div class="card"><span class="muted">{p}</span><strong>{fmt(sum(entries.filter((e) => e.person === p)))} h</strong></div>
+      ))}
+      <div class="card"><span class="muted">Days worked</span><strong>{days.length}</strong></div>
+    </div>
+
+    <section class="card">
+      <h2>Per topic</h2>
+      <div class="bars">
+        {perTag.map(({ key, hours }) => (
+          <div class="bar-row">
+            <TagPill tag={key} link={false} />
+            <div class="track"><div class="fill" style={`width: ${(hours / Math.max(1, total)) * 100}%; background: ${TAGS[key].color}`} /></div>
+            <span class="num">{fmt(hours)} h</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Per day</h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              {people.map((p) => <th class="num">{p}</th>)}
+              <th class="num">Total</th>
+              <th class="chart-col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {days.map((d) => (
+              <tr>
+                <td>
+                  <details>
+                    <summary>{formatDate(d.day)}</summary>
+                    <ul>{d.list.map((e) => <li><strong>{e.person}</strong> · {fmt(e.hours)} h — {e.task}</li>)}</ul>
+                  </details>
+                </td>
+                {d.perPerson.map((h) => <td class="num">{fmt(h)}</td>)}
+                <td class="num"><strong>{fmt(d.total)}</strong></td>
+                <td class="chart-col"><div class="track"><div class="fill" style={`width: ${(d.total / maxDay) * 100}%`} /></div></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 1rem; margin: 2rem 0 1rem; }
+  .stats .card { display: flex; flex-direction: column; gap: .2rem; }
+  .stats strong { font-size: 1.6rem; font-variant-numeric: tabular-nums; }
+  section.card { margin-bottom: 1rem; }
+  h2 { font-size: 1.1rem; margin: 0 0 1rem; }
+  .bars { display: grid; gap: .6rem; }
+  .bar-row { display: grid; grid-template-columns: 11rem 1fr 4rem; align-items: center; gap: .75rem; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .track { height: .6rem; background: var(--border); border-radius: 999px; overflow: hidden; }
+  .fill { height: 100%; background: var(--text); border-radius: 999px; }
+  .chart-col { width: 30%; min-width: 6rem; vertical-align: middle; }
+  summary { cursor: pointer; white-space: nowrap; }
+  details ul { margin: .5rem 0 0; padding-left: 1rem; font-size: .9rem; color: var(--muted); min-width: 16rem; }
+  @media (max-width: 560px) {
+    .bar-row { grid-template-columns: 1fr 3.5rem; }
+    .bar-row .track { grid-column: 1 / -1; grid-row: 2; }
+  }
+</style>

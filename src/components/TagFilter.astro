@@ -1,0 +1,44 @@
+---
+import { TAGS, TAG_KEYS, url, type Tag } from '../consts';
+
+interface Props {
+  active?: Tag;
+  counts: Record<string, number>;
+  total: number;
+}
+
+const { active, counts, total } = Astro.props;
+---
+
+<nav class="filter" aria-label="Filter posts by topic">
+  <a href={url()} aria-current={!active ? 'page' : undefined}>All <span>{total}</span></a>
+  {TAG_KEYS.map((key) => (
+    <a
+      href={url(`tags/${key}/`)}
+      aria-current={active === key ? 'page' : undefined}
+      style={`--c: ${TAGS[key].color}`}
+    >
+      {TAGS[key].label} <span>{counts[key] ?? 0}</span>
+    </a>
+  ))}
+</nav>
+
+<style>
+  .filter { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.5rem 0 2rem; }
+  a {
+    --c: var(--text);
+    display: inline-flex;
+    gap: .45rem;
+    align-items: center;
+    padding: .4rem .9rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: .95rem;
+    font-weight: 500;
+    background: var(--surface);
+  }
+  a:hover { border-color: var(--c); }
+  a[aria-current='page'] { background: var(--c); border-color: var(--c); color: var(--bg); }
+  span { font-size: .8rem; opacity: .65; font-variant-numeric: tabular-nums; }
+</style>

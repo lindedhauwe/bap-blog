@@ -25,7 +25,7 @@ Embedding Figma/FigJam/YouTube: paste the `<iframe>` embed code straight into th
 | File | Page | What |
 | --- | --- | --- |
 | `src/data/hours.json` | /hours | Filled from Toggl on every deploy (see below). Manual entries: `id`, `date`, `hours`, optional `tag`, `task` |
-| `src/data/planning.json` | /planning | Phases with `start`, `end`, `goal` and `tasks` (`status`: `todo`, `doing`, `done`) |
+| `src/data/planning.json` | /planning | Generated from Notion on every deploy (see below), don't edit by hand |
 | `src/data/team.json` | /team | Each member's `roles` and `tasks` |
 
 Every entry needs a unique `id`. Mistakes (missing fields, unknown tags) show up as errors in `npm run dev`.
@@ -40,6 +40,15 @@ Every deploy (and every morning at 06:00) the workflow imports our Toggl Track e
 - Running timers are skipped until they're stopped.
 - Toggl descriptions are shown on the public hours page.
 - To try it locally: put `TOGGL_TOKENS=...` in a `.env` file (never commit it) and run `npm run toggl`.
+
+## Planning from Notion
+
+Every deploy (and every morning) the workflow imports our planning from the Notion page **BaP - Boektopia** with `scripts/fetch-notion.mjs`.
+
+- Databases named **Tasks week N** become the weeks on /planning (week 1 starts on Monday 26 October). Add a "Tasks week 7" database in Notion and it shows up automatically.
+- Databases named **Deadlines & milestones** become the deadlines.
+- The GitHub secret `NOTION_TOKEN` holds the token of the "BAP blog" connection in Notion. The page must be shared with that connection.
+- To try it locally: put `NOTION_TOKEN=...` in `.env` and run `npm run notion`.
 
 ## Deploying to GitHub Pages
 

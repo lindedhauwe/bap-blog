@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "toggl": "node --env-file-if-exists=.env scripts/fetch-toggl.mjs"
+    "toggl": "node --env-file-if-exists=.env scripts/fetch-toggl.mjs",
+    "notion": "node --env-file-if-exists=.env scripts/fetch-notion.mjs"
   },
   "dependencies": {
     "astro": "^7.4.4"

@@ -41,22 +41,4 @@ const hours = defineCollection({
   }),
 });
 
-const planning = defineCollection({
-  loader: file('./src/data/planning.json'),
-  schema: z.object({
-    phase: z.string(),
-    start: z.coerce.date(),
-    end: z.coerce.date(),
-    goal: z.string(),
-    tasks: z.array(
-      z.object({
-        title: z.string(),
-        owner: z.string().optional(),
-        tag: tag.optional(),
-        status: z.enum(['todo', 'doing', 'done']).default('todo'),
-      }),
-    ),
-  }),
-});
-
-export const collections = { posts, team, hours, planning };
+export const collections = { posts, team, hours };

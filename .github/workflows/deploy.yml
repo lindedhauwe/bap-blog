@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-  # Every morning, so new Toggl hours show up without a push.
+  # Every morning, so new Toggl hours and Notion planning show up without a push.
   schedule:
     - cron: '0 5 * * *'
 
@@ -29,6 +29,10 @@ jobs:
         run: npm run toggl
         env:
           TOGGL_TOKENS: ${{ secrets.TOGGL_TOKENS }}
+      - name: Import planning from Notion
+        run: npm run notion
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
       - uses: withastro/action@v3
         with:
           node-version: 24

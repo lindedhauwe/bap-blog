@@ -1,25 +1,131 @@
-[
-  {
-    "id": "kickoff",
-    "phase": "Kick-off & setup",
-    "start": "2026-10-26",
-    "end": "2026-11-04",
-    "goal": "Project defined, blog online, link submitted.",
-    "tasks": [
-      { "title": "Set up process blog", "owner": "Linde", "tag": "development", "status": "doing" },
-      { "title": "Submit blog URL (deadline Wed 4 Nov)", "status": "todo" }
-    ]
-  },
-  {
-    "id": "research",
-    "phase": "Research",
-    "start": "2026-11-05",
-    "end": "2026-11-25",
-    "goal": "Replace with your own phase goal.",
-    "tasks": [
-      { "title": "Example UX research task", "tag": "ux", "status": "todo" },
-      { "title": "Example design exploration", "tag": "design", "status": "todo" },
-      { "title": "Example technical spike", "tag": "development", "status": "todo" }
-    ]
-  }
-]
+{
+  "weeks": [
+    {
+      "week": 1,
+      "start": "2026-10-26",
+      "end": "2026-11-01",
+      "tasks": [
+        {
+          "title": "Klant contacteren (vragen opdracht)",
+          "status": "done",
+          "people": []
+        },
+        {
+          "title": "Coach gesprek 1",
+          "status": "done",
+          "people": []
+        },
+        {
+          "title": "Blog pt1",
+          "status": "done",
+          "people": []
+        },
+        {
+          "title": "Concept al een deel meer uitwerken",
+          "status": "doing",
+          "people": []
+        },
+        {
+          "title": "Concept kiezen",
+          "status": "doing",
+          "people": []
+        },
+        {
+          "title": "Enquete / vragenlijst opstellen",
+          "status": "done",
+          "people": []
+        },
+        {
+          "title": "Planning start up",
+          "status": "done",
+          "people": []
+        },
+        {
+          "title": "Briefing screenen",
+          "status": "done",
+          "people": []
+        },
+        {
+          "title": "Ideatie round 1",
+          "status": "done",
+          "people": []
+        },
+        {
+          "title": "Simon gesprek 1 plannen",
+          "status": "done",
+          "people": []
+        },
+        {
+          "title": "Pitch opstellen",
+          "status": "done",
+          "people": []
+        },
+        {
+          "title": "Klant contacteren (tickets)",
+          "status": "done",
+          "people": []
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "start": "2026-11-02",
+      "end": "2026-11-08",
+      "tasks": []
+    },
+    {
+      "week": 3,
+      "start": "2026-11-09",
+      "end": "2026-11-15",
+      "tasks": []
+    },
+    {
+      "week": 4,
+      "start": "2026-11-16",
+      "end": "2026-11-22",
+      "tasks": []
+    },
+    {
+      "week": 5,
+      "start": "2026-11-23",
+      "end": "2026-11-29",
+      "tasks": []
+    },
+    {
+      "week": 6,
+      "start": "2026-11-30",
+      "end": "2026-12-06",
+      "tasks": []
+    }
+  ],
+  "deadlines": [
+    {
+      "title": "Pitchdeck",
+      "status": "todo",
+      "date": "2026-11-01"
+    },
+    {
+      "title": "Project pitch",
+      "status": "todo",
+      "date": "2026-11-20"
+    },
+    {
+      "title": "Test moment",
+      "status": "todo",
+      "date": "2026-12-03"
+    },
+    {
+      "title": "Jury",
+      "status": "todo",
+      "date": "2026-12-16"
+    },
+    {
+      "title": "Figma dump",
+      "status": "todo"
+    },
+    {
+      "title": "Blog",
+      "status": "todo"
+    }
+  ]
+}

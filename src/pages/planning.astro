@@ -1,73 +1,112 @@
 ---
-import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import TagPill from '../components/TagPill.astro';
 import { formatDate } from '../consts';
+import planning from '../data/planning.json';
 
-const phases = (await getCollection('planning')).sort(
-  (a, b) => a.data.start.valueOf() - b.data.start.valueOf(),
-);
-const today = new Date();
-const labels = { todo: 'To do', doing: 'In progress', done: 'Done' };
+// Imported daily from Notion (see scripts/fetch-notion.mjs).
+type Status = 'todo' | 'doing' | 'done';
+const { weeks, deadlines } = planning as {
+  weeks: { week: number; start: string; end: string; tasks: { title: string; status: Status; people: string[] }[] }[];
+  deadlines: { title: string; status: Status; date?: string }[];
+};
+
+const today = new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/Brussels' });
+const nextDeadline = deadlines.find((d) => d.date && d.date >= today);
+const daysUntil = (date: string) => Math.round((Date.parse(date) - Date.parse(today)) / 86_400_000);
+const labels: Record<Status, string> = { todo: 'To do', doing: 'In progress', done: 'Done' };
 ---
 
 <Base title="Planning">
   <div class="container">
     <h1>Planning</h1>
-    <p class="muted">Our phases, goals and tasks. Updated as the project moves.</p>
+    <p class="muted">Our deadlines and tasks per week. Synced every day from our planning in Notion.</p>
 
-    <ol class="phases">
-      {phases.map(({ data }) => {
-        const state = today > data.end ? 'past' : today >= data.start ? 'current' : 'future';
-        const done = data.tasks.filter((t) => t.status === 'done').length;
-        return (
-          <li class:list={['card', state]}>
-            <div class="head">
-              <h2>{data.phase}</h2>
-              {state === 'current' && <span class="now">Now</span>}
-            </div>
-            <p class="muted dates">
-              {formatDate(data.start)} – {formatDate(data.end)} · {done}/{data.tasks.length} done
-            </p>
-            <p>{data.goal}</p>
-            <ul class="tasks">
-              {data.tasks.map((task) => (
-                <li class={task.status}>
-                  <span class="status">{labels[task.status]}</span>
-                  <span class="title">{task.title}</span>
-                  {task.owner && <span class="muted">{task.owner}</span>}
-                  {task.tag && <TagPill tag={task.tag} link={false} />}
-                </li>
-              ))}
-            </ul>
+    <section class="card deadlines">
+      <h2>Deadlines & milestones</h2>
+      <ol>
+        {deadlines.map((d) => (
+          <li class:list={[d.status, { past: d.date && d.date < today, next: d === nextDeadline }]}>
+            <time class="muted">{d.date ? formatDate(d.date) : 'No date yet'}</time>
+            <span class="title">{d.title}</span>
+            {d === nextDeadline && d.date && <span class="badge">{daysUntil(d.date) === 0 ? 'Today' : `In ${daysUntil(d.date)} days`}</span>}
+            {d.status !== 'todo' && <span class="status">{labels[d.status]}</span>}
           </li>
+        ))}
+      </ol>
+    </section>
+
+    <h2 class="weeks-title">Tasks per week</h2>
+    <div class="weeks">
+      {[...weeks].reverse().filter((w) => w.tasks.length > 0 || w.start <= today).map((w) => {
+        const current = today >= w.start && today <= w.end;
+        const done = w.tasks.filter((t) => t.status === 'done').length;
+        return (
+          <details class:list={['card', { current }]} open={current || undefined}>
+            <summary>
+              <span class="week">Week {w.week}</span>
+              {current && <span class="badge">This week</span>}
+              <span class="muted dates">{formatDate(w.start)} – {formatDate(w.end)}</span>
+              <span class="muted count">{w.tasks.length ? `${done}/${w.tasks.length} done` : 'No tasks yet'}</span>
+            </summary>
+            {w.tasks.length > 0 && (
+              <>
+                <div class="track"><div class="fill" style={`width: ${(done / w.tasks.length) * 100}%`} /></div>
+                <ul class="tasks">
+                  {w.tasks.map((t) => (
+                    <li class={t.status}>
+                      <span class="status">{labels[t.status]}</span>
+                      <span class="title">{t.title}</span>
+                      {t.people.length > 0 && <span class="muted">{t.people.join(', ')}</span>}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </details>
         );
       })}
-    </ol>
+    </div>
   </div>
 </Base>
 
 <style>
-  .phases { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; gap: 1rem; }
-  .phases > li.current { border-color: var(--text); }
-  .phases > li.past { opacity: .7; }
-  .head { display: flex; align-items: center; gap: .75rem; }
-  h2 { margin: 0; font-size: 1.3rem; }
-  .now { font-size: .75rem; font-weight: 700; background: var(--text); color: var(--bg); padding: .1rem .55rem; border-radius: 999px; }
-  .dates { margin: .25rem 0 .5rem; font-size: .9rem; }
+  h2 { font-size: 1.1rem; margin: 0 0 1rem; }
+  .deadlines { margin-top: 2rem; }
+  .deadlines ol { list-style: none; padding: 0; margin: 0; }
+  .deadlines li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .3rem .9rem;
+    padding: .6rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .deadlines time { width: 7.5rem; font-size: .9rem; font-variant-numeric: tabular-nums; }
+  .deadlines .past:not(.done) .title { color: var(--muted); }
+  .deadlines .next .title { font-weight: 650; }
+  .badge { font-size: .75rem; font-weight: 700; background: var(--text); color: var(--bg); padding: .1rem .55rem; border-radius: 999px; }
+  .weeks-title { margin-top: 2.5rem; }
+  .weeks { display: grid; gap: .75rem; }
+  .weeks details.current { border-color: var(--text); }
+  summary { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .75rem; cursor: pointer; }
+  .week { font-weight: 650; font-size: 1.1rem; }
+  .dates, .count { font-size: .9rem; }
+  .count { margin-left: auto; }
+  .track { height: .4rem; background: var(--border); border-radius: 999px; overflow: hidden; margin: 1rem 0 .5rem; }
+  .fill { height: 100%; background: var(--tag-feedback); border-radius: 999px; }
   .tasks { list-style: none; padding: 0; margin: 0; }
+  .tasks li, .deadlines li { font-size: .95rem; }
   .tasks li {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: .4rem .75rem;
+    gap: .3rem .75rem;
     padding: .5rem 0;
     border-top: 1px solid var(--border);
-    font-size: .95rem;
   }
   .status { font-size: .75rem; font-weight: 600; width: 6.5rem; color: var(--muted); }
   .doing .status { color: var(--tag-dev); }
   .done .status { color: var(--tag-feedback); }
-  .done .title { text-decoration: line-through; color: var(--muted); }
+  .tasks .done .title { text-decoration: line-through; color: var(--muted); }
   .title { flex: 1 1 12rem; }
 </style>

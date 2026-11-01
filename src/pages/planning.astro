@@ -17,8 +17,6 @@ const labels: Record<Status, string> = { todo: 'To do', doing: 'In progress', do
 
 const isPast = (date?: string) => !!date && date < today;
 const isCurrent = (w: { start: string; end: string }) => w.start <= today && today <= w.end;
-// Newest week first, without empty weeks that haven't started yet.
-const shownWeeks = [...weeks].reverse().filter((w) => w.tasks.length > 0 || w.start <= today);
 ---
 
 <Base title="Planning">
@@ -42,7 +40,7 @@ const shownWeeks = [...weeks].reverse().filter((w) => w.tasks.length > 0 || w.st
 
     <h2 class="weeks-title">Tasks per week</h2>
     <div class="weeks">
-      {shownWeeks.map((w) => {
+      {weeks.map((w) => {
         const current = isCurrent(w);
         const done = w.tasks.filter((t) => t.status === 'done').length;
         return (

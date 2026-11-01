@@ -14,6 +14,11 @@ const today = new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/Brussel
 const nextDeadline = deadlines.find((d) => d.date && d.date >= today);
 const daysUntil = (date: string) => Math.round((Date.parse(date) - Date.parse(today)) / 86_400_000);
 const labels: Record<Status, string> = { todo: 'To do', doing: 'In progress', done: 'Done' };
+
+const isPast = (date?: string) => !!date && date < today;
+const isCurrent = (w: { start: string; end: string }) => w.start <= today && today <= w.end;
+// Newest week first, without empty weeks that haven't started yet.
+const shownWeeks = [...weeks].reverse().filter((w) => w.tasks.length > 0 || w.start <= today);
 ---
 
 <Base title="Planning">
@@ -25,7 +30,7 @@ const labels: Record<Status, string> = { todo: 'To do', doing: 'In progress', do
       <h2>Deadlines & milestones</h2>
       <ol>
         {deadlines.map((d) => (
-          <li class:list={[d.status, { past: d.date && d.date < today, next: d === nextDeadline }]}>
+          <li class:list={[d.status, { past: isPast(d.date), next: d === nextDeadline }]}>
             <time class="muted">{d.date ? formatDate(d.date) : 'No date yet'}</time>
             <span class="title">{d.title}</span>
             {d === nextDeadline && d.date && <span class="badge">{daysUntil(d.date) === 0 ? 'Today' : `In ${daysUntil(d.date)} days`}</span>}
@@ -37,8 +42,8 @@ const labels: Record<Status, string> = { todo: 'To do', doing: 'In progress', do
 
     <h2 class="weeks-title">Tasks per week</h2>
     <div class="weeks">
-      {[...weeks].reverse().filter((w) => w.tasks.length > 0 || w.start <= today).map((w) => {
-        const current = today >= w.start && today <= w.end;
+      {shownWeeks.map((w) => {
+        const current = isCurrent(w);
         const done = w.tasks.filter((t) => t.status === 'done').length;
         return (
           <details class:list={['card', { current }]} open={current || undefined}>

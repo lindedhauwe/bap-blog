@@ -17,13 +17,13 @@ Simon asked us by mail to have some kind of planning and a blog ready, and to th
 
 - **Planning:** we keep our planning in Notion.
 - **Team:** we work on everything together. We haven't divided roles yet.
-- **Blog:** we hadn't really started yet, but our process was visible on our FigJam board. We planned to write it out later.
+- **Blog:** we had started a blog in Notion. Most of our process was visible on our FigJam board, and we planned to write it out on the blog later.
 - **Short term:** visiting Boektopia and doing research with our users.
 - **What we're struggling with:** what is expected of us in terms of research and UX/UI, and how big or small our product should be.
 
 ## Feedback from Simon
 
-- **Build the blog ourselves**, for example with Astro, instead of keeping it in Notion. And send him the link.
+- **Build the blog ourselves**, for example with Astro, instead of keeping it in Notion. He wasn't a fan of our Notion blog. And send him the link.
 - **Pitch deadline tomorrow:** his gut feeling was that it's fine to present both of our ideas.
 - **Put Simon in cc** when we mail the client.
 - **Define our own tasks** in the coming weeks. Not "this person does all the UX and that person all the design", but actual tasks with a name on them.
@@ -32,7 +32,7 @@ Simon also told us about his own experience with reading: he tends to fall aslee
 
 ## What we did with it
 
-- We built this blog with Astro.
+- We moved our blog from Notion to this Astro site.
 - We'll put names on the tasks in our [planning](../../planning/).
 
 ## Next coaching moments

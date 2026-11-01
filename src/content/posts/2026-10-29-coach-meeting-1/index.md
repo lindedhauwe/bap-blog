@@ -3,8 +3,6 @@ title: "Coach meeting 1 with Simon"
 date: 2026-10-29T15:00
 description: Our first meeting with our coach Simon Vanherweghe about our planning, our blog and how big our project should be.
 tags: [feedback]
-ai: >-
-  No AI was used during the meeting. Claude (AI) turned our Dutch meeting notes into this English post.
 ---
 
 ## Before the meeting

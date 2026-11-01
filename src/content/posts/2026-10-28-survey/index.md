@@ -23,4 +23,4 @@ Online, and via friends and family.
 
 ## Results
 
-We still have to analyse the results.
+See [Survey results: what families want](../2026-10-29-survey-results/).

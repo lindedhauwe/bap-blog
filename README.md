@@ -24,11 +24,22 @@ Embedding Figma/FigJam/YouTube: paste the `<iframe>` embed code straight into th
 
 | File | Page | What |
 | --- | --- | --- |
-| `src/data/hours.json` | /hours | One entry per person per task: `id` (unique), `date`, `person`, `hours`, optional `tag`, `task` |
+| `src/data/hours.json` | /hours | Filled from Toggl on every deploy (see below). Manual entries: `id`, `date`, `hours`, optional `tag`, `task` |
 | `src/data/planning.json` | /planning | Phases with `start`, `end`, `goal` and `tasks` (`status`: `todo`, `doing`, `done`) |
 | `src/data/team.json` | /team | Each member's `roles` and `tasks` |
 
 Every entry needs a unique `id`. Mistakes (missing fields, unknown tags) show up as errors in `npm run dev`.
+
+## Hours from Toggl
+
+Every deploy (and every morning at 06:00) the workflow imports our Toggl Track entries with `scripts/fetch-toggl.mjs`.
+
+- Only entries in a project with **BAP** in its name count (e.g. "BAP UX", "BAP Design"). Other projects stay private.
+- The GitHub secret `TOGGL_TOKENS` holds the API token of each team member, separated by commas.
+- A Toggl project or tag with *UX*, *Research*, *Design*, *Development*, *Dev*, *Feedback* or *Meeting* in its name sets the topic. Anything else shows up as "Other".
+- Running timers are skipped until they're stopped.
+- Toggl descriptions are shown on the public hours page.
+- To try it locally: put `TOGGL_TOKENS=...` in a `.env` file (never commit it) and run `npm run toggl`.
 
 ## Deploying to GitHub Pages
 

@@ -2,19 +2,19 @@
   {
     "id": "linde",
     "name": "Linde",
-    "roles": ["Role 1", "Role 2"],
-    "tasks": ["Describe what Linde is responsible for", "Another task"]
+    "roles": ["UX", "Design", "Development"],
+    "tasks": ["Describe what Linde is responsible for"]
   },
   {
     "id": "femke",
     "name": "Femke",
-    "roles": ["Role 1"],
+    "roles": ["UX", "Design", "Development"],
     "tasks": ["Describe what this teammate is responsible for"]
   },
   {
     "id": "naomi",
     "name": "Naomi",
-    "roles": ["Role 1"],
+    "roles": ["UX", "Design", "Development"],
     "tasks": ["Describe what this teammate is responsible for"]
   }
 ]

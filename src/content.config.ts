@@ -35,10 +35,9 @@ const hours = defineCollection({
   loader: file('./src/data/hours.json'),
   schema: z.object({
     date: z.coerce.date(),
-    person: z.string(),
     hours: z.number().positive(),
     tag: tag.optional(),
-    task: z.string(),
+    task: z.string().default(''),
   }),
 });
 

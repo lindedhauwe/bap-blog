@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Every morning, so new Toggl hours show up without a push.
+  schedule:
+    - cron: '0 5 * * *'
 
 permissions:
   contents: read
@@ -19,6 +22,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Import hours from Toggl
+        run: npm run toggl
+        env:
+          TOGGL_TOKENS: ${{ secrets.TOGGL_TOKENS }}
       - uses: withastro/action@v3
         with:
           node-version: 24

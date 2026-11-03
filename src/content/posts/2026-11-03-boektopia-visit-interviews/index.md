@@ -7,7 +7,6 @@ tags: [ux] # one or more of: ux, design, development, feedback
 # coverAlt: What's in the cover image
 ai: >-
   Claude (AI) turned our Dutch text and the notes on our observation board into this English post. The visit, interviews, observations and conclusions are our own. We checked the translation and adjusted the text and layout where needed.
-draft: true # remove (or set false) to publish
 ---
 
 ## What did we do?

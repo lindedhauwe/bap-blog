@@ -39,8 +39,10 @@ We're aiming for **8 to 12 short interviews** of less than 5 minutes.
 - If you could be in a story, what kind of book would it be? What would you do?
 - What's the best kind of book: adventure, magic, scary, funny or detective?
 
-## A genre board
+## Genre picker
 
 Instead of only asking about genres, we could make a **physical board with genre pictures** where children put a tally mark. Libraries often put icons on children's books so they can recognise the genre quickly, so we collected some of those as inspiration.
 
-![Genre icons from the library and our own selection: humour, science fiction, scary, detective, adventure, animals, fantasy & magic, love & friendship, informative](./genre-icons.png)
+![Genre picker, page 1: "Which genre do you like reading most? Point with your finger at the genre you like best!" with icons for adventure, magic & fantasy and scary](./genre-picker-1.png)
+
+![Genre picker, page 2: icons for funny, science fiction, animals, love & friendship, detective & mystery and history](./genre-picker-2.png)

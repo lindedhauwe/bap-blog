@@ -5,8 +5,9 @@ description: We analysed our 12 interviews at Boektopia and compared them with o
 tags: [ux]
 ai: >-
   We asked Claude (AI) to analyse the answers of both surveys together with our observations, and to pull out conclusions and points of attention. We read its analysis critically and added our own comments; the conclusions in this post are the ones we agreed with. Claude also turned our Dutch notes into this English post.
-draft: true # remove (or set false) to publish
 ---
+
+> **Good to know:** the client let us know the installation can't be too large-scale. There's no fixed budget per installation yet, but €5,000 is a good indication. In their words: "Boektopia tries to create as much impact as possible for as little budget as possible. As for space: as you'll have seen, our halls are already quite full, so a visible but compact installation is the way to go."
 
 ## What did we do?
 
@@ -101,3 +102,6 @@ Our conclusions for the design:
 
 ## Next steps
 
+- **Waiting for feedback from the client:** we sent them our pitch deck and are waiting for their response.
+- **Making our concept smaller:** we keep ideating on how to scale our concept down to a compact installation.
+- **Design principles:** we've started working towards our design principles.

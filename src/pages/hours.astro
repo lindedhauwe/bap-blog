@@ -43,7 +43,7 @@ const fmt = (hours: number) => {
 
     <div class="stats">
       <div class="card"><span class="muted">Total</span><strong>{fmt(total)}</strong></div>
-      <div class="card"><span class="muted">This week</span><strong>{fmt(thisWeek)}</strong></div>
+      <div class="card"><span class="muted">This week</span><strong>{fmt(thisWeek)}</strong><small class="muted" title="Based on the study credits of our bachelor thesis">of our 46h goal per week</small></div>
       <div class="card"><span class="muted">Days worked</span><strong>{days.length}</strong></div>
       <div class="card"><span class="muted">Average per day</span><strong>{fmt(total / Math.max(1, days.length))}</strong></div>
     </div>
@@ -97,6 +97,7 @@ const fmt = (hours: number) => {
   .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 1rem; margin: 2rem 0 1rem; }
   .stats .card { display: flex; flex-direction: column; gap: .2rem; }
   .stats strong { font-size: 1.6rem; font-variant-numeric: tabular-nums; }
+  .stats small { font-size: .8rem; }
   section.card { margin-bottom: 1rem; }
   h2 { font-size: 1.1rem; margin: 0 0 1rem; }
   .bars { display: grid; gap: .6rem; }

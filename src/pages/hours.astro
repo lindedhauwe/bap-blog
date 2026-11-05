@@ -24,7 +24,14 @@ const lastWeek = sum(entries.filter((e) => e.date.valueOf() >= weekAgo));
 
 const perTag = TAG_KEYS.map((key) => ({ key, hours: sum(entries.filter((e) => e.tag === key)) }));
 const untagged = sum(entries.filter((e) => !e.tag));
-const fmt = (n: number) => n.toLocaleString('en-GB', { maximumFractionDigits: 1 });
+// Hours as "2 h 48 min" instead of "2.8 h".
+const fmt = (hours: number) => {
+  const minutes = Math.round(hours * 60);
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  if (h === 0) return `${m} min`;
+  return m === 0 ? `${h} h` : `${h} h ${m} min`;
+};
 ---
 
 <Base title="Hours">
@@ -33,10 +40,10 @@ const fmt = (n: number) => n.toLocaleString('en-GB', { maximumFractionDigits: 1 
     <p class="muted">How many hours we spend on our bachelor thesis as a team, per day. Tracked in Toggl and updated automatically every day.</p>
 
     <div class="stats">
-      <div class="card"><span class="muted">Total</span><strong>{fmt(total)} h</strong></div>
-      <div class="card"><span class="muted">Last 7 days</span><strong>{fmt(lastWeek)} h</strong></div>
+      <div class="card"><span class="muted">Total</span><strong>{fmt(total)}</strong></div>
+      <div class="card"><span class="muted">Last 7 days</span><strong>{fmt(lastWeek)}</strong></div>
       <div class="card"><span class="muted">Days worked</span><strong>{days.length}</strong></div>
-      <div class="card"><span class="muted">Average per day</span><strong>{fmt(total / Math.max(1, days.length))} h</strong></div>
+      <div class="card"><span class="muted">Average per day</span><strong>{fmt(total / Math.max(1, days.length))}</strong></div>
     </div>
 
     {untagged < total && <section class="card">
@@ -46,14 +53,14 @@ const fmt = (n: number) => n.toLocaleString('en-GB', { maximumFractionDigits: 1 
           <div class="bar-row">
             <TagPill tag={key} link={false} />
             <div class="track"><div class="fill" style={`width: ${(hours / Math.max(1, total)) * 100}%; background: ${TAGS[key].color}`} /></div>
-            <span class="num">{fmt(hours)} h</span>
+            <span class="num">{fmt(hours)}</span>
           </div>
         ))}
         {untagged > 0 && (
           <div class="bar-row">
             <span class="muted other">Other</span>
             <div class="track"><div class="fill" style={`width: ${(untagged / total) * 100}%; background: var(--muted)`} /></div>
-            <span class="num">{fmt(untagged)} h</span>
+            <span class="num">{fmt(untagged)}</span>
           </div>
         )}
       </div>
@@ -70,10 +77,10 @@ const fmt = (n: number) => n.toLocaleString('en-GB', { maximumFractionDigits: 1 
                 <td>
                   <details>
                     <summary>{formatDate(d.day)}</summary>
-                    <ul>{d.list.map((e) => <li>{fmt(e.hours)} h — {e.task || 'No description'}</li>)}</ul>
+                    <ul>{d.list.map((e) => <li>{fmt(e.hours)} — {e.task || 'No description'}</li>)}</ul>
                   </details>
                 </td>
-                <td class="num"><strong>{fmt(d.total)} h</strong></td>
+                <td class="num"><strong>{fmt(d.total)}</strong></td>
                 <td class="chart-col"><div class="track"><div class="fill" style={`width: ${(d.total / maxDay) * 100}%`} /></div></td>
               </tr>
             ))}
@@ -91,16 +98,16 @@ const fmt = (n: number) => n.toLocaleString('en-GB', { maximumFractionDigits: 1 
   section.card { margin-bottom: 1rem; }
   h2 { font-size: 1.1rem; margin: 0 0 1rem; }
   .bars { display: grid; gap: .6rem; }
-  .bar-row { display: grid; grid-template-columns: 11rem 1fr 4rem; align-items: center; gap: .75rem; }
+  .bar-row { display: grid; grid-template-columns: 11rem 1fr 6.5rem; align-items: center; gap: .75rem; }
   .other { font-size: .8rem; font-weight: 600; }
-  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
   .track { height: .6rem; background: var(--border); border-radius: 999px; overflow: hidden; }
   .fill { height: 100%; background: var(--text); border-radius: 999px; }
   .chart-col { width: 50%; min-width: 6rem; vertical-align: middle; }
   summary { cursor: pointer; white-space: nowrap; }
   details ul { margin: .5rem 0 0; padding-left: 1rem; font-size: .9rem; color: var(--muted); min-width: 16rem; }
   @media (max-width: 560px) {
-    .bar-row { grid-template-columns: 1fr 3.5rem; }
+    .bar-row { grid-template-columns: 1fr 6.5rem; }
     .bar-row .track { grid-column: 1 / -1; grid-row: 2; }
   }
 </style>

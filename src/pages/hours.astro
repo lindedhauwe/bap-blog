@@ -26,13 +26,13 @@ const thisWeek = sum(entries.filter((e) => dayKey(e.date) >= monday));
 
 const perTag = TAG_KEYS.map((key) => ({ key, hours: sum(entries.filter((e) => e.tag === key)) }));
 const untagged = sum(entries.filter((e) => !e.tag));
-// Hours as "2 h 48 min" instead of "2.8 h".
+// Hours as "2h 48min" instead of "2.8 h".
 const fmt = (hours: number) => {
   const minutes = Math.round(hours * 60);
   const h = Math.floor(minutes / 60);
   const m = minutes % 60;
-  if (h === 0) return `${m} min`;
-  return m === 0 ? `${h} h` : `${h} h ${m} min`;
+  if (h === 0) return `${m}min`;
+  return m === 0 ? `${h}h` : `${h}h ${m}min`;
 };
 ---
 

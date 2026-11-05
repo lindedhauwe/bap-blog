@@ -19,8 +19,10 @@ const days = [...new Set(entries.map((e) => dayKey(e.date)))].map((day) => {
 });
 const maxDay = Math.max(1, ...days.map((d) => d.total));
 
-const weekAgo = Date.now() - 7 * 86_400_000;
-const lastWeek = sum(entries.filter((e) => e.date.valueOf() >= weekAgo));
+// This week = Monday to Sunday, in Belgian time, as of the last build.
+const today = new Date(new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/Brussels' }));
+const monday = dayKey(new Date(today.valueOf() - ((today.getUTCDay() + 6) % 7) * 86_400_000));
+const thisWeek = sum(entries.filter((e) => dayKey(e.date) >= monday));
 
 const perTag = TAG_KEYS.map((key) => ({ key, hours: sum(entries.filter((e) => e.tag === key)) }));
 const untagged = sum(entries.filter((e) => !e.tag));
@@ -41,7 +43,7 @@ const fmt = (hours: number) => {
 
     <div class="stats">
       <div class="card"><span class="muted">Total</span><strong>{fmt(total)}</strong></div>
-      <div class="card"><span class="muted">Last 7 days</span><strong>{fmt(lastWeek)}</strong></div>
+      <div class="card"><span class="muted">This week</span><strong>{fmt(thisWeek)}</strong></div>
       <div class="card"><span class="muted">Days worked</span><strong>{days.length}</strong></div>
       <div class="card"><span class="muted">Average per day</span><strong>{fmt(total / Math.max(1, days.length))}</strong></div>
     </div>

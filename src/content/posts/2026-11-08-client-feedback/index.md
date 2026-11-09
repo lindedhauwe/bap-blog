@@ -5,8 +5,8 @@ description: The client evaluated our first concept pitch. We scored 15/20, with
 tags: [feedback] # one or more of: ux, design, development, feedback
 # cover: ./cover.jpg
 # coverAlt: What's in the cover image
-# ai: >-   # use >- so colons in your text don't break things
-#   What did we ask AI, what did we keep, what did we reject and why?
+ai: >-
+  Claude (AI) turned our Dutch notes into this English post and copied the client's ratings from their evaluation sheet into the results table. The feedback itself comes from the client, and the next steps are our own.
 ---
 
 ## Feedback from the client

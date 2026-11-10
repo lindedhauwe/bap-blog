@@ -33,7 +33,7 @@ const olrs = Object.entries(OLRS).map(([code, olr]) => ({
           <tbody>
             {olrs.map((o) => (
               <tr>
-                <td class="olr-cell"><a href={`#${olrAnchor(o.code)}`}><strong>{o.code}</strong></a><span lang="nl">{o.text}</span></td>
+                <td class="olr-cell"><a href={`#${olrAnchor(o.code)}`}><strong>{o.code}</strong></a><span>{o.text}</span></td>
                 {moments.map(([key]) => (
                   <td class="moment">
                     {o.assessed[key] ? <span class="check" title={o.assessed[key].join(', ')}>✓</span> : <span class="muted">–</span>}
@@ -51,7 +51,7 @@ const olrs = Object.entries(OLRS).map(([code, olr]) => ({
       {olrs.map((o) => (
         <section class="card" id={olrAnchor(o.code)}>
           <h2>{o.code}</h2>
-          <p lang="nl">{o.text}</p>
+          <p>{o.text}</p>
           <h3>Posts ({o.posts.length})</h3>
           {o.posts.length === 0 ? (
             <p class="muted">No posts yet.</p>

@@ -39,44 +39,44 @@ type Moment = keyof typeof MOMENTS;
 
 export const OLRS: Record<string, { text: string; assessed: Partial<Record<Moment, string[]>> }> = {
   'OLR01-I-1': {
-    text: 'De student synthetiseert inzichten omtrent een complexe uitdaging tot een overtuigend digitaal interactief concept.',
-    assessed: { pitchdeck: ['Klant'], testmoment: ['Expert desk'], jury: ['Klant', 'Andere klanten', 'Expert desk'] },
+    text: 'The student synthesises insights about a complex challenge into a compelling digital interactive concept.',
+    assessed: { pitchdeck: ['Client'], testmoment: ['Expert desk'], jury: ['Client', 'Other clients', 'Expert desk'] },
   },
   'OLR02-I-1': {
-    text: 'De student verantwoordt procesmatige keuzes in relatie tot briefing, strategie en beoogd eindresultaat.',
-    assessed: { testmoment: ['Expert desk'], jury: ['Klant', 'Andere klanten', 'Expert desk'] },
+    text: 'The student justifies process-related choices in relation to the briefing, strategy and intended end result.',
+    assessed: { testmoment: ['Expert desk'], jury: ['Client', 'Other clients', 'Expert desk'] },
   },
   'OLR03-T-4': {
-    text: 'De student toetst tijdens verschillende fases van een project de gemaakte keuzes of prototypes bij de doelgroep.',
-    assessed: { pitchdeck: ['Klant'], testmoment: ['Expert desk'] },
+    text: 'The student tests the choices made or the prototypes with the target audience during the various phases of a project.',
+    assessed: { pitchdeck: ['Client'], testmoment: ['Expert desk'] },
   },
   'OLR03-I-1': {
-    text: 'De student creëert een consistente, passende en creatieve visuele identiteit voor het gehele project.',
+    text: 'The student creates a consistent, fitting and creative visual identity for the entire project.',
     assessed: { testmoment: ['Expert desk'], jury: ['Expert desk'] },
   },
   'OLR03-I-2': {
-    text: 'De student hanteert een holistisch perspectief tijdens het ontwerpen van toepassingen en ervaringen.',
-    assessed: { jury: ['Klant', 'Expert desk'] },
+    text: 'The student adopts a holistic perspective when designing applications and experiences.',
+    assessed: { jury: ['Client', 'Expert desk'] },
   },
   'OLR04-I-2': {
-    text: 'De student experimenteert op kritische wijze met innovatieve tech om grensverleggende interacties te creëren.',
+    text: 'The student experiments critically with innovative technology to create groundbreaking interactions.',
     assessed: { testmoment: ['Expert desk'], jury: ['Expert desk'] },
   },
   'OLR05-I-3': {
-    text: 'De student creëert vanuit een inclusieve en empathische mindset in alle fases van een project.',
-    assessed: { testmoment: ['Expert desk'], jury: ['Klant', 'Expert desk'] },
+    text: 'The student creates from an inclusive and empathetic mindset in all phases of a project.',
+    assessed: { testmoment: ['Expert desk'], jury: ['Client', 'Expert desk'] },
   },
   'OLR06-I-1': {
-    text: 'De student beheerst de professionele communicatiestroom in een (internationale) context.',
-    assessed: { pitchdeck: ['Klant'], jury: ['Klant', 'Andere klanten', 'Expert desk', 'Devine coach'] },
+    text: 'The student masters the flow of professional communication in an (international) context.',
+    assessed: { pitchdeck: ['Client'], jury: ['Client', 'Other clients', 'Expert desk', 'Devine coach'] },
   },
   'OLR08-I-1': {
-    text: 'De student verantwoordt gemaakte keuzes op basis van hun positieve en duurzame impact op mens en de wereld.',
-    assessed: { jury: ['Klant', 'Andere klanten', 'Expert desk', 'Devine coach'] },
+    text: 'The student justifies the choices made on the basis of their positive and sustainable impact on people and the world.',
+    assessed: { jury: ['Client', 'Other clients', 'Expert desk', 'Devine coach'] },
   },
   'OLR09-I-1': {
-    text: 'De student werkt op constructieve wijze samen met collega’s en stakeholders met verschillende disciplinaire en culturele achtergronden.',
-    assessed: { pitchdeck: ['Klant'], jury: ['Klant', 'Devine coach'] },
+    text: 'The student collaborates constructively with colleagues and stakeholders from different disciplinary and cultural backgrounds.',
+    assessed: { pitchdeck: ['Client'], jury: ['Client', 'Devine coach'] },
   },
 };
 

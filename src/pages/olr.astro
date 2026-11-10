@@ -27,13 +27,13 @@ const olrs = Object.entries(OLRS).map(([code, olr]) => ({
           <thead>
             <tr>
               <th>Learning outcome</th>
-              {moments.map(([, m]) => <th class="moment">{m.label}<span>{formatDate(m.date)}</span></th>)}
+              {moments.map(([, m]) => <th class="moment">{m.label}<span>{m.date}</span></th>)}
             </tr>
           </thead>
           <tbody>
             {olrs.map((o) => (
               <tr>
-                <td><a href={`#${olrAnchor(o.code)}`}><strong>{o.code}</strong></a> {o.name}</td>
+                <td class="olr-cell"><a href={`#${olrAnchor(o.code)}`}><strong>{o.code}</strong></a><span lang="nl">{o.text}</span></td>
                 {moments.map(([key]) => (
                   <td class="moment">
                     {o.assessed[key] ? <span class="check" title={o.assessed[key].join(', ')}>✓</span> : <span class="muted">–</span>}
@@ -50,10 +50,8 @@ const olrs = Object.entries(OLRS).map(([code, olr]) => ({
     <div class="list">
       {olrs.map((o) => (
         <section class="card" id={olrAnchor(o.code)}>
-          <p class="code">{o.code}</p>
-          <h2>{o.name}</h2>
-          <p>{o.text}</p>
-          <p class="muted nl" lang="nl">“{o.nl}”</p>
+          <h2>{o.code}</h2>
+          <p lang="nl">{o.text}</p>
           <h3>Posts ({o.posts.length})</h3>
           {o.posts.length === 0 ? (
             <p class="muted">No posts yet.</p>
@@ -85,8 +83,8 @@ const olrs = Object.entries(OLRS).map(([code, olr]) => ({
   .check { color: var(--tag-feedback); font-weight: 700; }
   .who { display: block; font-size: .75rem; line-height: 1.4; }
   .list { display: grid; gap: 0; }
-  .code { font-size: .8rem; font-weight: 650; color: var(--muted); margin: 0; font-variant-numeric: tabular-nums; }
-  .nl { font-size: .9rem; font-style: italic; }
+  .olr-cell { min-width: 16rem; }
+  .olr-cell span { display: block; }
   ul { list-style: none; padding: 0; margin: 0; }
   li { display: flex; gap: 1rem; padding: .4rem 0; border-top: 1px solid var(--border); font-size: .95rem; }
   li time { width: 7rem; flex-shrink: 0; font-variant-numeric: tabular-nums; }

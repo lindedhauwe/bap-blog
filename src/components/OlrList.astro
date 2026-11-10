@@ -13,7 +13,7 @@ const { codes } = Astro.props;
     <span class="muted label">Learning outcomes</span>
     {codes.map((code) => (
       <a href={url(`olr/#${olrAnchor(code)}`)} title={OLRS[code].text}>
-        <strong>{code}</strong> {OLRS[code].name}
+        {code}
       </a>
     ))}
   </div>
@@ -32,5 +32,5 @@ const { codes } = Astro.props;
     white-space: nowrap;
   }
   a:hover { border-color: var(--text); }
-  strong { font-weight: 650; font-variant-numeric: tabular-nums; }
+  a { font-weight: 600; font-variant-numeric: tabular-nums; }
 </style>

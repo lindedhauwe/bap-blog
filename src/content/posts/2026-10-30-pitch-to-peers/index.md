@@ -3,7 +3,7 @@ title: "Pitch to our peers"
 date: 2026-10-30T09:00
 description: We presented our concept to the class and got feedback from other students.
 tags: [feedback]
-olr: [OLR06-I-1, OLR09-I-1]
+olr: [OLR06-I-1, OLR08-I-1, OLR09-I-1]
 ai: >-
   Claude (AI) turned the Dutch notes on our FigJam board into this English post. The research, ideas and decisions are our own.
 ---

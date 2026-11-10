@@ -3,7 +3,7 @@ title: Client feedback
 date: 2026-11-08
 description: The client evaluated our first concept pitch. We scored 15/20, with strong research and presentation, but the link between our games and books has to get stronger.
 tags: [feedback] # one or more of: ux, design, development, feedback
-olr: [OLR06-I-1, OLR09-I-1]
+olr: [OLR03-T-4, OLR06-I-1, OLR09-I-1]
 # cover: ./cover.jpg
 # coverAlt: What's in the cover image
 ai: >-

@@ -3,6 +3,7 @@ title: "Ideation: our top ideas"
 date: 2026-10-29T11:00
 description: "From individual brainstorms to two top ideas: the Magic Mirror and Book Runner."
 tags: [ux, design]
+olr: [OLR01-I-1, OLR09-I-1]
 ai: >-
   We tried to generate ideas with AI, but they were really bad. The final choices came from our own brainstorm and voting.
 ---

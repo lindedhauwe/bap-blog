@@ -3,6 +3,7 @@ title: Desk research on reading motivation
 date: 2026-10-28T11:00
 description: Reading skill in Flanders keeps dropping. The real problem is reading pleasure and motivation.
 tags: [ux]
+olr: [OLR01-I-1, OLR08-I-1]
 ai: >-
   We used Claude to summarise some of the research sources. We read and checked all sources ourselves before using them.
 ---

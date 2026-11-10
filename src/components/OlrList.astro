@@ -1,0 +1,36 @@
+---
+import { OLRS, olrAnchor, url } from '../consts';
+
+interface Props {
+  codes: string[];
+}
+
+const { codes } = Astro.props;
+---
+
+{codes.length > 0 && (
+  <div class="olr">
+    <span class="muted label">Learning outcomes</span>
+    {codes.map((code) => (
+      <a href={url(`olr/#${olrAnchor(code)}`)} title={OLRS[code].text}>
+        <strong>{code}</strong> {OLRS[code].name}
+      </a>
+    ))}
+  </div>
+)}
+
+<style>
+  .olr { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; margin-top: .75rem; }
+  .label { font-size: .8rem; margin-right: .25rem; }
+  a {
+    font-size: .8rem;
+    padding: .15rem .6rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    text-decoration: none;
+    background: var(--surface);
+    white-space: nowrap;
+  }
+  a:hover { border-color: var(--text); }
+  strong { font-weight: 650; font-variant-numeric: tabular-nums; }
+</style>

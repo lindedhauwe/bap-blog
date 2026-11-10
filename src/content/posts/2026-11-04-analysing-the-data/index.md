@@ -3,6 +3,7 @@ title: Analysing the Boektopia data
 date: 2026-11-04
 description: We analysed our 12 interviews at Boektopia and compared them with our online survey. Funny and adventurous, short, and played together.
 tags: [ux]
+olr: [OLR02-I-1, OLR03-T-4, OLR05-I-3]
 ai: >-
   We asked Claude (AI) to analyse the answers of both surveys together with our observations, and to pull out conclusions and points of attention. We read its analysis critically and added our own comments; the conclusions in this post are the ones we agreed with. Claude also turned our Dutch notes into this English post.
 ---

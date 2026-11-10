@@ -3,6 +3,7 @@ title: "From two ideas to one concept"
 date: 2026-10-29T14:00
 description: "We combined our ideas into one projected game with five mini games, each in a different genre."
 tags: [ux, design, development]
+olr: [OLR01-I-1, OLR02-I-1, OLR04-I-2, OLR08-I-1]
 ai: >-
   Claude (AI) turned the Dutch notes on our FigJam board into this English post. The research, ideas and decisions are our own.
 ---

@@ -5,6 +5,7 @@ title: Short, descriptive title
 date: 2026-11-05
 description: One sentence that sums up the post.
 tags: [ux] # one or more of: ux, design, development, feedback
+olr: [OLR01-I-1] # learning outcomes, see the list on /olr/ (src/consts.ts)
 # cover: ./cover.jpg
 # coverAlt: What's in the cover image
 # ai: >-   # use >- so colons in your text don't break things

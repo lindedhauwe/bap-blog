@@ -3,6 +3,7 @@ title: Boektopia visit & interviews
 date: 2026-11-03
 description: We visited Boektopia Kortrijk to look around and interview 12 families with children aged 6 to 12.
 tags: [ux] # one or more of: ux, design, development, feedback
+olr: [OLR03-T-4, OLR05-I-3]
 # cover: ./cover.jpg
 # coverAlt: What's in the cover image
 ai: >-

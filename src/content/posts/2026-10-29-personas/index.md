@@ -3,6 +3,7 @@ title: Personas
 date: 2026-10-29T09:00
 description: Two personas, a child and a mother who visit Boektopia together.
 tags: [ux]
+olr: [OLR05-I-3]
 ---
 
 ## What we did

@@ -3,6 +3,7 @@ title: "Survey results: what families want"
 date: 2026-10-29T12:00
 description: Children want fantasy, adventure and to be active. Parents want to do something together. Both want it short.
 tags: [ux]
+olr: [OLR01-I-1, OLR03-T-4]
 ai: >-
   Claude (AI) turned the Dutch notes on our FigJam board into this English post. The research, ideas and decisions are our own.
 ---

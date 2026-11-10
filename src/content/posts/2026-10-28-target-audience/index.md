@@ -3,6 +3,7 @@ title: Identifying the target audience
 date: 2026-10-28T10:00
 description: Why we focus on families with children aged 6 to 12.
 tags: [ux]
+olr: [OLR02-I-1, OLR05-I-3]
 ---
 
 - Boektopia has 80,000–100,000 visitors: readers and non-readers, families and adults.

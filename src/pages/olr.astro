@@ -1,0 +1,93 @@
+---
+import Base from '../layouts/Base.astro';
+import { MOMENTS, OLRS, formatDate, olrAnchor, url } from '../consts';
+import { getPosts } from '../lib';
+
+const posts = await getPosts();
+const moments = Object.entries(MOMENTS) as [keyof typeof MOMENTS, (typeof MOMENTS)[keyof typeof MOMENTS]][];
+const olrs = Object.entries(OLRS).map(([code, olr]) => ({
+  code,
+  ...olr,
+  posts: posts.filter((p) => p.data.olr.includes(code)),
+}));
+---
+
+<Base title="Learning outcomes">
+  <div class="container wide">
+    <h1>Learning outcomes</h1>
+    <p class="muted intro">
+      The learning outcomes (OLRs) we have to show in our bachelor thesis, when they are assessed and by whom. Every post links to the
+      outcomes it shows evidence for.
+    </p>
+
+    <section class="card">
+      <h2>When they are assessed</h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Learning outcome</th>
+              {moments.map(([, m]) => <th class="moment">{m.label}<span>{formatDate(m.date)}</span></th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {olrs.map((o) => (
+              <tr>
+                <td><a href={`#${olrAnchor(o.code)}`}><strong>{o.code}</strong></a> {o.name}</td>
+                {moments.map(([key]) => (
+                  <td class="moment">
+                    {o.assessed[key] ? <span class="check" title={o.assessed[key].join(', ')}>✓</span> : <span class="muted">–</span>}
+                    {o.assessed[key] && <span class="who muted">{o.assessed[key].join(' · ')}</span>}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="list">
+      {olrs.map((o) => (
+        <section class="card" id={olrAnchor(o.code)}>
+          <p class="code">{o.code}</p>
+          <h2>{o.name}</h2>
+          <p>{o.text}</p>
+          <p class="muted nl" lang="nl">“{o.nl}”</p>
+          <h3>Posts ({o.posts.length})</h3>
+          {o.posts.length === 0 ? (
+            <p class="muted">No posts yet.</p>
+          ) : (
+            <ul>
+              {o.posts.map((p) => (
+                <li>
+                  <time class="muted">{formatDate(p.data.date)}</time>
+                  <a href={url(`posts/${p.id}/`)}>{p.data.title}</a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      ))}
+    </div>
+  </div>
+</Base>
+
+<style>
+  .intro { max-width: var(--max); }
+  section.card { margin-top: 1.5rem; scroll-margin-top: 5rem; }
+  h2 { font-size: 1.15rem; margin: 0 0 .5rem; }
+  h3 { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 1.25rem 0 .25rem; }
+  td a { text-decoration: none; }
+  td a:hover { text-decoration: underline; }
+  .moment { text-align: center; min-width: 7.5rem; }
+  th.moment span { display: block; font-weight: 400; text-transform: none; letter-spacing: 0; }
+  .check { color: var(--tag-feedback); font-weight: 700; }
+  .who { display: block; font-size: .75rem; line-height: 1.4; }
+  .list { display: grid; gap: 0; }
+  .code { font-size: .8rem; font-weight: 650; color: var(--muted); margin: 0; font-variant-numeric: tabular-nums; }
+  .nl { font-size: .9rem; font-style: italic; }
+  ul { list-style: none; padding: 0; margin: 0; }
+  li { display: flex; gap: 1rem; padding: .4rem 0; border-top: 1px solid var(--border); font-size: .95rem; }
+  li time { width: 7rem; flex-shrink: 0; font-variant-numeric: tabular-nums; }
+</style>

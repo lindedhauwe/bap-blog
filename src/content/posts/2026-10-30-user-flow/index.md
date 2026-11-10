@@ -3,6 +3,7 @@ title: "User flow"
 date: 2026-10-30T10:00
 description: How a family moves through our installation, from spotting it to leaving with book recommendations.
 tags: [ux]
+olr: [OLR03-I-2]
 ai: >-
   Claude (AI) turned the Dutch notes on our FigJam board into this English post. The research, ideas and decisions are our own.
 ---

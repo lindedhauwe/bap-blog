@@ -3,6 +3,7 @@ title: Analysing the briefing
 date: 2026-10-28T09:00
 description: What Boektopia wants, which challenge we picked, and the tension between "innovative" and "robust".
 tags: [ux]
+olr: [OLR02-I-1]
 ai: >-
   We used Claude to summarise the brief. We read the full brief and the client presentation ourselves and checked the summary against them.
 ---

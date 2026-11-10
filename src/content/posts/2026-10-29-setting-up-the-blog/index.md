@@ -3,6 +3,7 @@ title: Setting up our process blog
 date: 2026-10-29
 description: Why we built our process blog with Astro, how it's structured and how we'll keep it up to date.
 tags: [development]
+olr: [OLR06-I-1]
 ai: >-
   The blog structure and code were scaffolded with Claude Code (AI coding assistant) based on the assignment briefing. We reviewed the generated code, ran it locally and adjusted it before publishing. TODO: add what you changed or didn't agree with.
 ---

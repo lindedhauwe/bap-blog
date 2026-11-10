@@ -1,7 +1,7 @@
 import { defineCollection } from 'astro:content';
 import { glob, file } from 'astro/loaders';
 import { z } from 'astro/zod';
-import { TAG_KEYS } from './consts';
+import { TAG_KEYS, OLR_KEYS } from './consts';
 
 const tag = z.enum(TAG_KEYS);
 
@@ -14,6 +14,8 @@ const posts = defineCollection({
       date: z.coerce.date(),
       description: z.string(),
       tags: z.array(tag).min(1),
+      // School learning outcomes this post shows evidence for, e.g. [OLR01-I-1].
+      olr: z.array(z.enum(OLR_KEYS)).default([]),
       cover: image().optional(),
       coverAlt: z.string().optional(),
       // How AI was used for this post's work, and how we judged its output.

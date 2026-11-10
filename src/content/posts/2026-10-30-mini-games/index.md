@@ -3,6 +3,7 @@ title: "Brainstorming the mini games"
 date: 2026-10-30T11:00
 description: Scenes, props and goals for each genre, from jungle and pirates to dragons and wizards.
 tags: [design, ux]
+olr: [OLR01-I-1, OLR03-I-2]
 ai: >-
   Claude (AI) turned the Dutch notes on our FigJam board into this English post. The research, ideas and decisions are our own.
 ---

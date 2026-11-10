@@ -13,7 +13,7 @@ npm run dev     # http://localhost:4321
 
 1. Copy `src/content/posts/_template.md` to a new folder: `src/content/posts/YYYY-MM-DD-short-title/index.md`
 2. Put images in that same folder and use `![alt text](./image.jpg)`.
-3. Fill in the frontmatter (`title`, `date`, `description`, `tags`, optional `ai`).
+3. Fill in the frontmatter (`title`, `date`, `description`, `tags`, `olr`, optional `ai`). `olr` lists the learning outcomes the post shows evidence for, e.g. `[OLR01-I-1, OLR05-I-3]`. All codes are on /olr/ and in `src/consts.ts`.
 4. Remove `draft: true` to publish. Drafts are visible in `npm run dev` only.
 
 Tags: `ux`, `design`, `development`, `feedback`. A post can have several. New tags: add them to `TAGS` in `src/consts.ts`.

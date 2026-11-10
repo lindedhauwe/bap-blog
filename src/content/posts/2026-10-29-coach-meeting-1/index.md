@@ -3,6 +3,7 @@ title: "Coach meeting 1 with Simon"
 date: 2026-10-29T15:00
 description: Our first meeting with our coach Simon Vanherweghe about our planning, our blog and how big our project should be.
 tags: [feedback]
+olr: [OLR06-I-1, OLR09-I-1]
 ---
 
 ## Before the meeting

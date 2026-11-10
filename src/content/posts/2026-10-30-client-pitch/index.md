@@ -3,6 +3,7 @@ title: "Pitch video for Boektopia"
 date: 2026-10-30T12:00
 description: We recorded a pitch video of our concept for the client. We're waiting for their reaction.
 tags: [feedback]
+olr: [OLR01-I-1, OLR06-I-1]
 ai: >-
   Claude (AI) turned the Dutch notes on our FigJam board into this English post. The research, ideas and decisions are our own.
 ---

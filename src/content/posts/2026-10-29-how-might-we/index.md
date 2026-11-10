@@ -3,6 +3,7 @@ title: How Might We questions
 date: 2026-10-29T10:00
 description: The questions we used to frame our ideation.
 tags: [ux]
+olr: [OLR01-I-1, OLR05-I-3]
 ---
 
 - How might we give everyone a success experience within 30 seconds, also non-readers?

@@ -3,6 +3,7 @@ title: "Preparing our Boektopia visit"
 date: 2026-11-01T12:00
 description: What we want to observe and ask when we visit Boektopia Kortrijk on Monday.
 tags: [ux]
+olr: [OLR03-T-4, OLR05-I-3]
 ai: >-
   Claude (AI) turned the Dutch notes on our FigJam board into this English post. The research, ideas and decisions are our own.
 ---

@@ -2,9 +2,9 @@
 # Copy this file to a new folder, e.g. src/content/posts/2026-11-05-user-interviews/index.md
 # Put images in the same folder and reference them as ./image.jpg
 title: Short, descriptive title
-date: 2026-11-05
+date: 2026-11-11
 description: One sentence that sums up the post.
-tags: [ux] # one or more of: ux, design, development, feedback
+tags: [design] # one or more of: ux, design, development, feedback
 olr: [OLR01-I-1] # learning outcomes, see the list on /olr/ (src/consts.ts)
 # cover: ./cover.jpg
 # coverAlt: What's in the cover image

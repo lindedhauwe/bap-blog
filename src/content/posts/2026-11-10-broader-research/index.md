@@ -2,7 +2,7 @@
 title: Looking beyond books
 date: 2026-11-10
 description: Each of us researched extra themes, such as playful learning, inclusivity, more-than-human design and psychology, so our concept is built on more than just the theme of books.
-tags: [ux, design]
+tags: [ux]
 olr: [OLR03-I-2, OLR05-I-3, OLR08-I-1, OLR01-I-1]
 cover: ./research-board.jpg
 coverAlt: Our FigJam research board with six blue frames, one per theme, full of sources, notes and blue sticky notes with the key findings

@@ -53,6 +53,18 @@ We had a consult with the UX expert desk. We showed where we stood with our rese
 
 > How might we combine play and reading, so families with children aged 6 to 12 at Boektopia can step into different literary genres, discover which genre suits the children best, and leave with a positive experience that makes them want to read?
 
+### Our mini-games, simplified
+
+Each player now has one task. At the end, both players work together to uncover a book, which then appears as a recommendation: "Did you like this genre? Then take a look at these books…"
+
+| Genre | Game | Player 1 | Player 2 | Together |
+| --- | --- | --- | --- | --- |
+| Comedy | Famous characters from funny Dutch children's books | Tickles the characters with a feather, so they do a silly move | Throws water balloons at them, so they say their famous quote | Click a whoopee cushion until it bursts and a book appears |
+| Adventure | A ship in a storm that gets wilder and wilder | Captain: steers the ship past the rocks | Sailor: scoops water out of the boat | Click a treasure chest open, with a book inside |
+| Fantasy | Defeat an evil wizard in three rounds | Does a spell move to hit the wizard | Blocks the wizard's spells with a magic shield | Click the wizard's spell book until they get it |
+| History | A big sandbox full of buried objects: a dinosaur bone, a Viking helmet, a mummy… | Digs up lumps of sand with a shovel | Brushes them clean and puts the object in the right spot | Clean the last, heavy find, which turns out to be a book |
+| Detective | A book was stolen from the library | Searches for 3 clues with a magnifying glass | Catches the right suspect with a net, using the clues | Get the stolen book back |
+
 ### References for our personas
 
 We added references to our [personas](../2026-10-29-personas/), Matthias and Annelies. Each part of a persona now links to where it comes from: our survey, our desk research, or both. For example, Matthias wanting to move around while playing comes from the survey, where 67% chose "everyone can actively join in". Annelies's busy schedule comes from the survey too: 92% want an experience of 5 minutes at most.

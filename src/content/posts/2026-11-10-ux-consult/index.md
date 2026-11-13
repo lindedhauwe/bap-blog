@@ -1,6 +1,6 @@
 ---
 title: UX consult
-date: 2026-11-11
+date: 2026-11-10
 description: Feedback from the UX expert desk on our research, personas and mini-games, and what they expect from us at the beta pitch.
 tags: [ux, feedback]
 olr: [OLR01-I-1, OLR03-I-2, OLR05-I-3, OLR08-I-1]
@@ -47,7 +47,7 @@ We had a consult with the UX expert desk. We showed where we stood with our rese
 
 ## What did we do with it?
 
-- The feedback confirmed the [extra research beyond books](../2026-11-10-broader-research/) we had started the day before. It covers most of the points above: [playful learning](../2026-11-10-broader-research/#playful-learning), [inclusivity](../2026-11-10-broader-research/#inclusivity), [more-than-human design and sustainability](../2026-11-10-broader-research/#more-than-human-design-and-sustainability), [psychology](../2026-11-10-broader-research/#psychology), [the needs and values of our target audience](../2026-11-10-broader-research/#needs-and-values-of-our-target-audience) and [the impact after the event](../2026-11-10-broader-research/#impact-after-the-event).
+- We started [extra research beyond books](../2026-11-10-broader-research/): [playful learning](../2026-11-10-broader-research/#playful-learning), [inclusivity](../2026-11-10-broader-research/#inclusivity), [more-than-human design and sustainability](../2026-11-10-broader-research/#more-than-human-design-and-sustainability), [psychology](../2026-11-10-broader-research/#psychology), [the needs and values of our target audience](../2026-11-10-broader-research/#needs-and-values-of-our-target-audience) and [the impact after the event](../2026-11-10-broader-research/#impact-after-the-event).
 - We shortened our mini-games to **1 to 2 minutes** each.
 
 ## Next steps

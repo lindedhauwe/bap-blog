@@ -19,7 +19,7 @@ We used Boektopia's colour palette, especially its blue and pink. We also plan t
 
 For the typography, we chose a basic font and plan to make it look like it has been cut out. Each genre will also have its own variation of the font to strengthen its identity.
 
-We discussed our first style board during a [visual design consultation](../2026-11-11-vd-consult-1/) (coming soon).
+We discussed our first style board during a [visual design consultation](../2026-11-10-vd-consult-1/).
 
 ![](./styleboard01.png)
 

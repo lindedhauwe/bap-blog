@@ -1,6 +1,6 @@
 ---
 title: Visual design consult
-date: 2026-11-11
+date: 2026-11-10
 description: Frederic liked our style board and advised us to drop the projection in favour of LED screens, because Boektopia is too brightly lit.
 tags: [design, feedback]
 olr: [OLR03-I-1, OLR02-I-1]

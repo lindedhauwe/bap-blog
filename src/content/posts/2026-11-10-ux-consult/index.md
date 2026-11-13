@@ -53,8 +53,15 @@ We had a consult with the UX expert desk. We showed where we stood with our rese
 
 > How might we combine play and reading, so families with children aged 6 to 12 at Boektopia can step into different literary genres, discover which genre suits the children best, and leave with a positive experience that makes them want to read?
 
+### References for our personas
+
+We added references to our [personas](../2026-10-29-personas/), Matthias and Annelies. Each part of a persona now links to where it comes from: our survey, our desk research, or both. For example, Matthias wanting to move around while playing comes from the survey, where 67% chose "everyone can actively join in". Annelies's busy schedule comes from the survey too: 92% want an experience of 5 minutes at most.
+
+We also marked what is **not** based on data. Annelies's personal details, like her job and hobbies, are fictional and only there to make her feel real.
+
+![Our two personas, Matthias (8) and Annelies (37), with arrows from each part to a box with its references from our survey and desk research](./persona-references.jpg)
+
 ## Next steps
 
-- Add references to our personas.
 - Keep each mini-game simple, with one objective and no points.
 - Prepare the beta pitch around the points above.

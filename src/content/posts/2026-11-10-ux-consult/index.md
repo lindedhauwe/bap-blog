@@ -48,7 +48,7 @@ We had a consult with the UX expert desk. We showed where we stood with our rese
 ## What did we do with it?
 
 - We started [extra research beyond books](../2026-11-10-broader-research/): [playful learning](../2026-11-10-broader-research/#playful-learning), [inclusivity](../2026-11-10-broader-research/#inclusivity), [more-than-human design and sustainability](../2026-11-10-broader-research/#more-than-human-design-and-sustainability), [psychology](../2026-11-10-broader-research/#psychology), [the needs and values of our target audience](../2026-11-10-broader-research/#needs-and-values-of-our-target-audience) and [the impact after the event](../2026-11-10-broader-research/#impact-after-the-event).
-- We shortened our mini-games to **1 to 2 minutes** each.
+- We shortened our mini-games to **1 to 2 minutes** each. We give the two players each a different task and keep it at that: one clear objective per player. Each game ends with the players working together to get a book recommendation.
 - We made our How Might We question more specific:
 
 > How might we combine play and reading, so families with children aged 6 to 12 at Boektopia can step into different literary genres, discover which genre suits the children best, and leave with a positive experience that makes them want to read?

@@ -19,6 +19,15 @@ for (const post of posts) {
 
 {posts.length === 0 && <p class="muted">No posts here yet.</p>}
 
+{posts.length > 1 && (
+  <div class="sort" role="group" aria-label="Sort posts by date">
+    <span class="muted">Sort:</span>
+    <button type="button" data-order="newest" aria-pressed="true">Newest first</button>
+    <button type="button" data-order="oldest" aria-pressed="false">Oldest first</button>
+  </div>
+)}
+
+<div class="post-list" data-order="newest">
 {[...groups].map(([month, items]) => (
   <section class="month">
     <h2>{month}</h2>
@@ -36,8 +45,49 @@ for (const post of posts) {
     </ol>
   </section>
 ))}
+</div>
+
+<script>
+  // Flips the timeline between newest first (default) and oldest first.
+  // The choice is remembered in this browser only.
+  const list = document.querySelector<HTMLElement>('.post-list');
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.sort button');
+
+  const apply = (order: string) => {
+    if (!list || list.dataset.order === order) return;
+    list.dataset.order = order;
+    // Reverse the months, and the posts inside each month.
+    [...list.children].reverse().forEach((month) => list.append(month));
+    list.querySelectorAll('ol').forEach((ol) => [...ol.children].reverse().forEach((li) => ol.append(li)));
+    buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.order === order)));
+  };
+
+  buttons.forEach((b) =>
+    b.addEventListener('click', () => {
+      apply(b.dataset.order!);
+      try { localStorage.setItem('post-order', b.dataset.order!); } catch {}
+    }),
+  );
+
+  try {
+    const saved = localStorage.getItem('post-order');
+    if (saved === 'oldest') apply('oldest');
+  } catch {}
+</script>
 
 <style>
+  .sort { display: flex; align-items: center; gap: .5rem; margin: -1rem 0 .5rem; font-size: .9rem; }
+  .sort button {
+    font: inherit;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: .25rem .8rem;
+    cursor: pointer;
+  }
+  .sort button:hover { border-color: var(--text); }
+  .sort button[aria-pressed='true'] { background: var(--text); border-color: var(--text); color: var(--bg); }
   .month h2 {
     font-size: .8rem;
     text-transform: uppercase;

@@ -4,6 +4,7 @@ date: 2026-11-16
 description: After the client's feedback, we rebuilt all five games out of real books. Every villain, prop and character now comes from an existing book.
 tags: [design, ux]
 olr: [OLR01-I-1, OLR02-I-1]
+authors: [linde]
 ai: >-
   We used Claude to brainstorm book references for each genre, check whether elements come from the book or the film, and help structure this post. We chose the final games and references ourselves, and we checked the suggestions critically. AI also pointed out which of our ideas came from films rather than books, such as the Disney versions of The Little Mermaid and Pinocchio.
 ---

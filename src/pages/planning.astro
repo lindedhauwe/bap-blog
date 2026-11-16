@@ -59,7 +59,11 @@ const isCurrent = (w: { start: string; end: string }) => w.start <= today && tod
                     <li class={t.status}>
                       <span class="status">{labels[t.status]}</span>
                       <span class="title">{t.title}</span>
-                      {t.people.length > 0 && <span class="muted">{t.people.join(', ')}</span>}
+                      {t.people.length > 0 && (
+                        <span class="people" title={t.people.join(', ')}>
+                          {t.people.map((name) => <span class="person">{name.split(' ')[0]}</span>)}
+                        </span>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -112,4 +116,6 @@ const isCurrent = (w: { start: string; end: string }) => w.start <= today && tod
   .done .status { color: var(--tag-feedback); }
   .tasks .done .title { text-decoration: line-through; color: var(--muted); }
   .title { flex: 1 1 12rem; }
+  .people { display: flex; flex-wrap: wrap; gap: .3rem; }
+  .person { font-size: .75rem; font-weight: 600; padding: .1rem .55rem; border: 1px solid var(--border); border-radius: 999px; background: var(--bg); }
 </style>

@@ -8,48 +8,144 @@ import { TAGS, TAG_KEYS, formatDate } from '../consts';
 const entries = (await getCollection('hours'))
   .map((e) => e.data)
   .sort((a, b) => b.date.valueOf() - a.date.valueOf());
+const team = (await getCollection('team')).map((m) => ({ id: m.id, name: m.data.name.split(' ')[0] }));
+
+const DAY = 86_400_000;
+const PROJECT_START = Date.parse('2026-10-26'); // Monday of week 1, same as our planning
+const GOAL = 46; // hours per person per week, based on the study credits of our bachelor thesis
 
 const sum = (list: typeof entries) => list.reduce((total, e) => total + e.hours, 0);
-const total = sum(entries);
-
-const dayKey = (d: Date) => d.toISOString().slice(0, 10);
-const days = [...new Set(entries.map((e) => dayKey(e.date)))].map((day) => {
-  const list = entries.filter((e) => dayKey(e.date) === day);
-  return { day, list, total: sum(list) };
-});
-const maxDay = Math.max(1, ...days.map((d) => d.total));
-
-// This week = Monday to Sunday, in Belgian time, as of the last build.
-const today = new Date(new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/Brussels' }));
-const monday = dayKey(new Date(today.valueOf() - ((today.getUTCDay() + 6) % 7) * 86_400_000));
-const thisWeek = sum(entries.filter((e) => dayKey(e.date) >= monday));
-
-const perTag = TAG_KEYS.map((key) => ({ key, hours: sum(entries.filter((e) => e.tag === key)) }));
-const untagged = sum(entries.filter((e) => !e.tag));
+const dayKey = (d: Date | number) => new Date(d).toISOString().slice(0, 10);
 // Hours as "2h 48min" instead of "2.8 h".
 const fmt = (hours: number) => {
   const minutes = Math.round(hours * 60);
   const h = Math.floor(minutes / 60);
   const m = minutes % 60;
-  if (h === 0) return `${m}min`;
+  if (h === 0) return m === 0 ? '0h' : `${m}min`;
   return m === 0 ? `${h}h` : `${h}h ${m}min`;
 };
+
+// Everyone in team.json, plus anyone Toggl gave us that we couldn't match.
+const people = [
+  ...team,
+  ...[...new Set(entries.map((e) => e.person ?? 'unknown'))]
+    .filter((id) => !team.some((m) => m.id === id))
+    .map((id) => ({ id, name: id === 'unknown' ? 'Unknown' : id })),
+];
+const personName = (id?: string) => people.find((p) => p.id === (id ?? 'unknown'))?.name ?? 'Unknown';
+const perPerson = (list: typeof entries) =>
+  people
+    .map((p) => ({ ...p, hours: sum(list.filter((e) => (e.person ?? 'unknown') === p.id)) }))
+    .filter((p) => p.hours > 0 || team.some((m) => m.id === p.id));
+
+const daysOf = (list: typeof entries) =>
+  [...new Set(list.map((e) => dayKey(e.date)))].map((day) => {
+    const dayList = list.filter((e) => dayKey(e.date) === day);
+    return { day, list: dayList, total: sum(dayList) };
+  });
+
+// Weeks run Monday to Sunday, in Belgian time, as of the last build.
+const today = Date.parse(new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/Brussels' }));
+const weekOf = (time: number) => Math.floor((time - PROJECT_START) / (7 * DAY)) + 1;
+const currentWeek = Math.max(1, weekOf(today));
+const lastWeek = Math.max(currentWeek, ...entries.map((e) => weekOf(e.date.valueOf())));
+const weeks = Array.from({ length: lastWeek }, (_, i) => {
+  const week = i + 1;
+  const start = PROJECT_START + i * 7 * DAY;
+  const list = entries.filter((e) => weekOf(e.date.valueOf()) === week);
+  const days = daysOf(list);
+  return {
+    week,
+    start: dayKey(start),
+    end: dayKey(start + 6 * DAY),
+    total: sum(list),
+    people: perPerson(list),
+    days,
+    maxDay: Math.max(1, ...days.map((d) => d.total)),
+  };
+});
+
+// All weeks together.
+const total = sum(entries);
+const allDays = daysOf(entries);
+const allPeople = perPerson(entries);
+const perTag = TAG_KEYS.map((key) => ({ key, hours: sum(entries.filter((e) => e.tag === key)) }));
+const untagged = sum(entries.filter((e) => !e.tag));
 ---
 
 <Base title="Hours">
   <div class="container wide">
     <h1>Time tracking</h1>
-    <p class="muted">How many hours we spend on our bachelor thesis as a team, per day. Tracked in Toggl and updated automatically every day.</p>
+    <p class="muted">How many hours we spend on our bachelor thesis, per week and per person. Tracked in Toggl and updated automatically every day.</p>
 
+    <section class="card week-nav" data-current={currentWeek}>
+      <div class="nav-bar">
+        <button type="button" data-step="-1" aria-label="Previous week">← Previous</button>
+        {weeks.map((w) => (
+          <div class="nav-title" data-week={w.week} hidden={w.week !== currentWeek}>
+            <strong>Week {w.week}</strong>
+            {w.week === currentWeek && <span class="badge">This week</span>}
+            <span class="muted">{formatDate(w.start)} – {formatDate(w.end)}</span>
+          </div>
+        ))}
+        <button type="button" data-step="1" aria-label="Next week">Next →</button>
+      </div>
+
+      {weeks.map((w) => (
+        <div class="week" data-week={w.week} hidden={w.week !== currentWeek}>
+          <h2>Hours per person</h2>
+          <div class="bars">
+            {w.people.map((p) => (
+              <div class="bar-row">
+                <span class="name">{p.name}</span>
+                <div class="track" title={`${fmt(p.hours)} of the ${GOAL}h goal`}><div class="fill" style={`width: ${Math.min(100, (p.hours / GOAL) * 100)}%`} /></div>
+                <span class="num"><strong>{fmt(p.hours)}</strong> <span class="muted">/ {GOAL}h</span></span>
+              </div>
+            ))}
+          </div>
+          <p class="team-total">
+            <span>Team total this week <span class="muted">(all of us together)</span></span>
+            <strong>{fmt(w.total)}</strong>
+          </p>
+          <p class="muted small">Our goal is {GOAL}h per person per week, based on the study credits of our bachelor thesis.</p>
+
+          <h2>Per day</h2>
+          {w.days.length === 0 && <p class="muted">No hours logged this week.</p>}
+          {w.days.length > 0 && (
+            <div class="table-scroll">
+              <table>
+                <tbody>
+                  {w.days.map((d) => (
+                    <tr>
+                      <td>
+                        <details>
+                          <summary>{formatDate(d.day)}</summary>
+                          <ul>{d.list.map((e) => <li>{fmt(e.hours)} · {personName(e.person)} — {e.task || 'No description'}</li>)}</ul>
+                        </details>
+                      </td>
+                      <td class="num"><strong>{fmt(d.total)}</strong></td>
+                      <td class="chart-col"><div class="track"><div class="fill" style={`width: ${(d.total / w.maxDay) * 100}%`} /></div></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+      ))}
+    </section>
+
+    <h2 class="all-title">All weeks together</h2>
     <div class="stats">
-      <div class="card"><span class="muted">Total</span><strong>{fmt(total)}</strong></div>
-      <div class="card"><span class="muted">This week</span><strong>{fmt(thisWeek)}</strong><small class="muted" title="Based on the study credits of our bachelor thesis">of our 46h goal per week</small></div>
-      <div class="card"><span class="muted">Days worked</span><strong>{days.length}</strong></div>
-      <div class="card"><span class="muted">Average per day</span><strong>{fmt(total / Math.max(1, days.length))}</strong></div>
+      <div class="card"><span class="muted">Team total</span><strong>{fmt(total)}</strong><small class="muted">all of us together, since week 1</small></div>
+      {allPeople.map((p) => (
+        <div class="card"><span class="muted">{p.name}</span><strong>{fmt(p.hours)}</strong></div>
+      ))}
+      <div class="card"><span class="muted">Days worked</span><strong>{allDays.length}</strong></div>
     </div>
 
     {untagged < total && <section class="card">
-      <h2>Per topic</h2>
+      <h2>Per topic <span class="muted small">(team total)</span></h2>
       <div class="bars">
         {perTag.map(({ key, hours }) => (
           <div class="bar-row">
@@ -67,41 +163,64 @@ const fmt = (hours: number) => {
         )}
       </div>
     </section>}
-
-    <section class="card">
-      <h2>Per day</h2>
-      {days.length === 0 && <p class="muted">No hours logged yet.</p>}
-      <div class="table-scroll">
-        <table>
-          <tbody>
-            {days.map((d) => (
-              <tr>
-                <td>
-                  <details>
-                    <summary>{formatDate(d.day)}</summary>
-                    <ul>{d.list.map((e) => <li>{fmt(e.hours)} — {e.task || 'No description'}</li>)}</ul>
-                  </details>
-                </td>
-                <td class="num"><strong>{fmt(d.total)}</strong></td>
-                <td class="chart-col"><div class="track"><div class="fill" style={`width: ${(d.total / maxDay) * 100}%`} /></div></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </section>
   </div>
 </Base>
 
+<script>
+  // Show one week at a time; the buttons step through the weeks.
+  const nav = document.querySelector<HTMLElement>('.week-nav');
+  if (nav) {
+    const parts = [...nav.querySelectorAll<HTMLElement>('[data-week]')];
+    const last = Math.max(...parts.map((el) => Number(el.dataset.week)));
+    const [prev, next] = nav.querySelectorAll<HTMLButtonElement>('[data-step]');
+    let week = Number(nav.dataset.current);
+    const show = () => {
+      parts.forEach((el) => (el.hidden = Number(el.dataset.week) !== week));
+      prev.disabled = week <= 1;
+      next.disabled = week >= last;
+    };
+    nav.querySelectorAll<HTMLButtonElement>('[data-step]').forEach((button) =>
+      button.addEventListener('click', () => {
+        week = Math.min(last, Math.max(1, week + Number(button.dataset.step)));
+        show();
+      }),
+    );
+    show();
+  }
+</script>
+
 <style>
-  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 1rem; margin: 2rem 0 1rem; }
+  .week-nav { margin: 2rem 0 2.5rem; }
+  .week-nav [hidden] { display: none; }
+  .nav-bar { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin-bottom: 1.5rem; }
+  .nav-title { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .2rem .6rem; text-align: center; }
+  .nav-title strong { font-size: 1.3rem; }
+  .nav-title .muted { width: 100%; font-size: .9rem; }
+  .nav-bar button {
+    font: inherit; font-size: .9rem; font-weight: 600; white-space: nowrap;
+    background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 999px;
+    padding: .4rem .9rem; cursor: pointer;
+  }
+  .nav-bar button:hover:not(:disabled) { border-color: var(--text); }
+  .nav-bar button:disabled { opacity: .35; cursor: default; }
+  .badge { font-size: .75rem; font-weight: 700; background: var(--text); color: var(--bg); padding: .1rem .55rem; border-radius: 999px; }
+  h2 { font-size: 1.1rem; margin: 0 0 1rem; }
+  .week h2:not(:first-child) { margin-top: 2rem; }
+  .all-title { font-size: 1.3rem; }
+  .team-total {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+    margin: 1.25rem 0 .25rem; padding-top: 1rem; border-top: 1px solid var(--border);
+  }
+  .team-total strong { font-size: 1.6rem; font-variant-numeric: tabular-nums; }
+  .small { font-size: .85rem; font-weight: 400; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 1rem; margin: 0 0 1rem; }
   .stats .card { display: flex; flex-direction: column; gap: .2rem; }
   .stats strong { font-size: 1.6rem; font-variant-numeric: tabular-nums; }
   .stats small { font-size: .8rem; }
   section.card { margin-bottom: 1rem; }
-  h2 { font-size: 1.1rem; margin: 0 0 1rem; }
   .bars { display: grid; gap: .6rem; }
-  .bar-row { display: grid; grid-template-columns: 11rem 1fr 6.5rem; align-items: center; gap: .75rem; }
+  .bar-row { display: grid; grid-template-columns: 11rem 1fr 7.5rem; align-items: center; gap: .75rem; }
+  .name { font-weight: 600; }
   .other { font-size: .8rem; font-weight: 600; }
   .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
   .track { height: .6rem; background: var(--border); border-radius: 999px; overflow: hidden; }
@@ -110,7 +229,8 @@ const fmt = (hours: number) => {
   summary { cursor: pointer; white-space: nowrap; }
   details ul { margin: .5rem 0 0; padding-left: 1rem; font-size: .9rem; color: var(--muted); min-width: 16rem; }
   @media (max-width: 560px) {
-    .bar-row { grid-template-columns: 1fr 6.5rem; }
+    .bar-row { grid-template-columns: 1fr 7.5rem; }
     .bar-row .track { grid-column: 1 / -1; grid-row: 2; }
+    .nav-bar button { padding: .4rem .6rem; }
   }
 </style>

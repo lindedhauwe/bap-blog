@@ -40,6 +40,7 @@ const hours = defineCollection({
     hours: z.number().positive(),
     tag: tag.optional(),
     task: z.string().default(''),
+    person: z.string().optional(), // team.json id, or the Toggl name if it didn't match
   }),
 });
 

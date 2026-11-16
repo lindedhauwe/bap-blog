@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  ids?: string[];
+}
+
+// Without ids the post is by the whole team. Shows first names: "Femke, Linde & Naomi".
+const team = await getCollection('team');
+const ids = Astro.props.ids?.length ? Astro.props.ids : team.map((m) => m.id);
+const names = ids.map((id) => team.find((m) => m.id === id)?.data.name.split(' ')[0] ?? id);
+const list = names.length > 1 ? `${names.slice(0, -1).join(', ')} & ${names.at(-1)}` : names[0];
+---
+
+<span class="authors">By {list}</span>
+
+<style>
+  .authors { font-size: .9rem; }
+</style>

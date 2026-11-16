@@ -4,6 +4,7 @@ date: 2026-11-15
 description: We compared a Wii Nunchuk with a separate motion sensor for our controllers, listed every part we would need, and ordered a small test kit to try both options.
 tags: [development]
 olr: [OLR02-I-1, OLR04-I-2]
+authors: [femke]
 ai: >-
   Claude (AI) helped us a lot in this research: it showed us which steps were involved, what we would need, which options we had, and where to look further. We asked Claude to compare the Wii Nunchuk with a separate motion sensor, to check which of our movements each option supports, and to suggest parts and shops. We kept its comparison, but looked up every part, price and shop ourselves (the green columns on our board) and changed its advice where it didn't fit our budget. We also asked Claude what the different screens for the jury and the final product mean for our game's ratio and resolution. We still have to check its estimates with the rental company. Claude also turned our Dutch notes into this English post.
 ---

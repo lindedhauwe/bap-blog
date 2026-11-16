@@ -8,7 +8,7 @@ const team = await getCollection('team');
 <Base title="Team">
   <div class="container">
     <h1>Team roles</h1>
-    <p class="muted">Who does what. Posts are written together, so they don't have a single author.</p>
+    <p class="muted">Who does what. Each post shows who worked on it.</p>
     <div class="grid">
       {team.map(({ data }) => (
         <section class="card">

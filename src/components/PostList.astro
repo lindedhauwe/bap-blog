@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { formatDate, url } from '../consts';
 import TagPill from './TagPill.astro';
+import Authors from './Authors.astro';
 
 interface Props {
   posts: CollectionEntry<'posts'>[];
@@ -38,6 +39,7 @@ for (const post of posts) {
           <div>
             <a class="title" href={url(`posts/${post.id}/`)}>{post.data.title}</a>
             <p class="muted">{post.data.description}</p>
+            <p class="muted byline"><Authors ids={post.data.authors} /></p>
             <div class="tags">{post.data.tags.map((tag) => <TagPill tag={tag} />)}</div>
           </div>
         </li>
@@ -76,6 +78,7 @@ for (const post of posts) {
 </script>
 
 <style>
+  .byline { margin: -.25rem 0 .5rem; }
   .sort { display: flex; align-items: center; gap: .5rem; margin: -1rem 0 .5rem; font-size: .9rem; }
   .sort button {
     font: inherit;

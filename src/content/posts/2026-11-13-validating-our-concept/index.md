@@ -4,6 +4,7 @@ date: 2026-11-13
 description: Before designing and developing further, we looked critically at our concept with three methods - PPCO, MoSCoW and the Speedboat.
 tags: [ux]
 olr: [OLR01-I-1, OLR02-I-1, OLR05-I-3]
+authors: [linde, naomi]
 cover: ./speedboat.png
 coverAlt: Our Speedboat board in FigJam, with a boat sailing to an island, wind, an anchor and rocks, each surrounded by sticky notes
 ai: >-

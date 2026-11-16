@@ -6,6 +6,7 @@ date: 2026-11-11
 description: One sentence that sums up the post.
 tags: [design] # one or more of: ux, design, development, feedback
 olr: [OLR01-I-1] # learning outcomes, see the list on /olr/ (src/consts.ts)
+# authors: [linde, naomi] # only if not all of us worked on it (ids from src/data/team.json)
 # cover: ./cover.jpg
 # coverAlt: What's in the cover image
 # ai: >-   # use >- so colons in your text don't break things

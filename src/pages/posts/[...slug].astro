@@ -52,6 +52,46 @@ const { title, date, description, tags, olr, cover, coverAlt, ai, draft } = post
   </article>
 </Base>
 
+<script>
+  // Adds previous/next buttons and a page counter under every <div class="flipbook">.
+  document.querySelectorAll<HTMLElement>('.prose .flipbook').forEach((book) => {
+    const pages = Array.from(book.children) as HTMLElement[];
+    if (pages.length < 2) return;
+    book.tabIndex = 0;
+
+    const nav = document.createElement('div');
+    nav.className = 'flipbook-nav';
+    const prev = document.createElement('button');
+    prev.type = 'button';
+    prev.textContent = '← Previous';
+    const next = document.createElement('button');
+    next.type = 'button';
+    next.textContent = 'Next →';
+    const counter = document.createElement('output');
+    nav.append(prev, counter, next);
+    book.after(nav);
+
+    const current = () => Math.round(book.scrollLeft / book.clientWidth);
+    const go = (i: number) =>
+      book.scrollTo({ left: Math.max(0, Math.min(pages.length - 1, i)) * book.clientWidth });
+    const update = () => {
+      const i = current();
+      counter.textContent = `${i + 1} / ${pages.length}`;
+      prev.disabled = i === 0;
+      next.disabled = i === pages.length - 1;
+    };
+
+    prev.addEventListener('click', () => go(current() - 1));
+    next.addEventListener('click', () => go(current() + 1));
+    book.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(current() - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(current() + 1); }
+    });
+    book.addEventListener('scroll', update, { passive: true });
+    update();
+  });
+</script>
+
 <style>
   .back { display: inline-block; margin-bottom: 2rem; text-decoration: none; font-size: .95rem; }
   header { margin-bottom: 2rem; }

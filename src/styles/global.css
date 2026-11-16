@@ -153,3 +153,8 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
   .prose .bar-chart li { grid-template-columns: 7rem 1fr 1.5rem; }
 }
 .prose iframe { width: 100%; border: 0; border-radius: var(--radius); aspect-ratio: 16 / 10; }
+
+/* Videos in posts, e.g. <figure><video src="../../videos/x.mp4" controls></video></figure> */
+.prose video { display: block; width: 100%; height: auto; border-radius: var(--radius); background: var(--border); }
+.prose figure:not(.chart) { margin: 2rem 0; }
+.prose figure:not(.chart) figcaption { margin-top: .5rem; color: var(--muted); font-size: .9rem; }

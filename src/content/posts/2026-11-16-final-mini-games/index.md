@@ -118,6 +118,11 @@ A book has been stolen from the library. Player 1 finds three clues: muddy shoe 
 
 Each clue rules out one suspect, so children really solve the case by reasoning. A wrong guess isn't a game over: the suspect gives a funny alibi and you try again.
 
+<figure>
+  <video src="../../videos/detective-game.mp4" controls autoplay muted loop playsinline aria-label="Visualisation of the detective game"></video>
+  <figcaption>A first visualisation of the detective game.</figcaption>
+</figure>
+
 ## What we learned
 
 The client's feedback made us realise that a genre alone doesn't link a game to reading. A link only works when players recognise something from a real book and are curious to find out more. By building every game out of real books, the game becomes a doorway to those books instead of a replacement for them.

@@ -17,6 +17,8 @@ On 15 and 16 November, we worked on the activation phase: translating our concep
 
 We mapped the full journey of a family, from walking around Boektopia to telling others about the experience. We split that journey into six phases: awareness, interest, desire, action, retention and loyalty. For each step, we wrote down what the visitor does, feels and thinks, which touchpoints they come across, and what the pain points and opportunities are.
 
+![Our user journey in FigJam: six phases from awareness to loyalty, with rows for action, feeling, thoughts, touchpoints, pain points and opportunities](./user-journey.jpg)
+
 **What we learned:**
 
 - **The experience starts before the game.** The stand has to stand out in a busy hall, and visitors have to understand quickly what's going on. That's why an eye-catching, decorated stand and a big screen you can see from all sides are important.
@@ -29,6 +31,8 @@ We mapped the full journey of a family, from walking around Boektopia to telling
 
 In a storyboard of ten scenes, we followed Lotte (10) and her dad Tom during their visit to Boektopia. We drew how they notice the stand, watch, join the queue, play the fantasy game together, take their card and finally discover a book in the fantasy section.
 
+![Our storyboard: ten hand-drawn scenes of Lotte and her dad Tom, from the busy fair floor to discovering a fantasy book](./storyboard.jpg)
+
 **What we learned:**
 
 - **The storyboard made the experience tangible.** We no longer saw the concept as separate parts, but as one story with a beginning, a middle and an end.
@@ -39,6 +43,8 @@ In a storyboard of ten scenes, we followed Lotte (10) and her dad Tom during the
 
 We wrote out the steps a user goes through, from discovering the installation to keeping the card as a souvenir. For each step, we added emojis to show how we expect the visitor to feel.
 
+![Our instruction guidelines in FigJam: nine steps from discovering the installation to keeping the card, each with emojis for the expected feeling](./instruction-guidelines.jpg)
+
 **What we learned:**
 
 - **Every step has to be short and unambiguous.** We deliberately kept the instructions simple: one action per step, in easy language.
@@ -48,6 +54,8 @@ We wrote out the steps a user goes through, from discovering the installation to
 ## 4. Levels of expertise
 
 We divided our users into four levels: beginner, intermediate, advanced and expert. For each level, we described who the user is (child and parent), what their characteristics are, what they need and what that means for our design.
+
+![Our levels of expertise in FigJam: four columns for beginner, intermediate, advanced and expert, each with who, characteristics, needs and design implications](./levels-of-expertise.jpg)
 
 | Level | Who | What they need |
 | --- | --- | --- |

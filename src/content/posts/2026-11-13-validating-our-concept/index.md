@@ -1,6 +1,6 @@
 ---
 title: Validating our concept
-date: 2026-11-16
+date: 2026-11-13
 description: Before designing and developing further, we looked critically at our concept with three methods - PPCO, MoSCoW and the Speedboat.
 tags: [ux]
 olr: [OLR01-I-1, OLR02-I-1, OLR05-I-3]

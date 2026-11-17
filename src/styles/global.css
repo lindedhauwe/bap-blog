@@ -98,6 +98,8 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 @media (max-width: 600px) {
   .prose .photo-note, .prose .photos { grid-template-columns: 1fr; }
 }
+/* Videos: put the file in public/files/ and use <video controls src="../../files/name.mp4"> */
+.prose video { display: block; width: 100%; height: auto; margin: 2rem 0; border-radius: var(--radius); background: #000; }
 /* <div class="flipbook">: pages (one image per paragraph) you can leaf through.
    Swipe or scroll sideways; the post page adds previous/next buttons and a page counter. */
 .prose .flipbook {

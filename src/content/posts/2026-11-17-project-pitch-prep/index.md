@@ -7,7 +7,6 @@ olr: [OLR01-I-1, OLR02-I-1, OLR06-I-1, OLR09-I-1]
 authors: [femke]
 ai: >-
   Claude (AI) turned our Dutch notes and our board into this English post. The ideas for the stamp card, the pros and cons for the client and the pitch content are our own.
-draft: true
 ---
 
 ## The assignment
@@ -30,9 +29,35 @@ We submit our presentation as a zip file on 20 November, before 10 p.m.
 
 ## Our slides
 
-<!-- Slides for the round table on 20 November go here, as a flipbook. -->
+These are the slides we'll show at the round table. You can leaf through them here:
 
-*Our slides for the round table will be added here after the pitch.*
+<div class="flipbook" aria-label="Our slides for the round table, 12 slides">
+
+![Slide 1: title slide, Het land van Kaboeko, with genre books hanging from strings](./slide-01.jpg)
+
+![Slide 2: our concept on three signposts: families with children aged 8 to 12, discovering the genre that fits the children's interests through 5 minigames, and 2-player games with physical controllers](./slide-02.jpg)
+
+![Slide 3: demo, a screenshot of our playable history minigame with a shovel in the sand and four frames for the treasures](./slide-03.jpg)
+
+![Slide 4: references, the book covers the history minigame refers to, like Het geheim van de piramide, Koning Arthur, Jet en het dinoskelet and Asterix](./slide-04.jpg)
+
+![Slide 5: style, our references, the fonts Oswald and Andika, and our color palette](./slide-05.jpg)
+
+![Slide 6: after experience, plan A, the stamp card with a tear-off strip for the contest, a voting board asking which genre you like best, and the pros and cons for the client](./slide-06.jpg)
+
+![Slide 7: after experience, plan B, three alternatives on signposts: voting without a prize, a live counter on an Aluvision panel, and origami or DIY with the stamp card](./slide-07.jpg)
+
+![Slide 8: full experience, version 1, a sketch of a parent and child in front of a screen between bookcases](./slide-08.jpg)
+
+![Slide 9: controllers, a docking station shaped like a stack of books with two tethered motion controllers and a button for each player, with example instructions like "Scoop the sand!" and "Brush the treasure clean!"](./slide-09.jpg)
+
+![Slide 10: installation, a photo of an Aluvision LED wall, with our plan to build a 3 × 2 m screen for a wow effect](./slide-10.jpg)
+
+![Slide 11: coming soon, first designs of the mystery game with bookcases and the comedy game with a circus tent, and more of course](./slide-11.jpg)
+
+![Slide 12: thank you, questions?](./slide-12.jpg)
+
+</div>
 
 ## What we'll present
 

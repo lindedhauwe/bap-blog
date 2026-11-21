@@ -1,7 +1,7 @@
 ---
 title: Testing 1
 date: 2026-11-21
-description: A first small test of our history minigame with a 12-year-old. He understood the game right away and found it easy, and he gave us a sharp tip about the sand.
+description: A first small test of our history minigame with Femke's 12-year-old brother. He understood the game right away and found it easy, and he gave us a sharp tip about the sand.
 tags: [ux]
 olr: [OLR03-T-4, OLR05-I-3]
 authors: [femke]
@@ -11,7 +11,7 @@ ai: >-
 
 ## The test
 
-We did a first small test of our **history minigame** with a boy of **12**, right in our target audience. The test took about **15 minutes**. He played on a laptop alone with the trackpad, because our controllers aren't connected to the game yet and because multiplayer does not work at the moment (see our [project pitch](../2026-11-20-project-pitch/)).
+We did a first small test of our **history minigame** with Fenne, a boy of **12**, right in our target audience. The test took about **15 minutes**. He played on a laptop alone with the trackpad, because our controllers aren't connected to the game yet and because multiplayer does not work at the moment (see our [project pitch](../2026-11-20-project-pitch/)).
 
 We asked him to:
 

@@ -34,7 +34,7 @@ We asked him to:
 
 ## What we observed
 
-- He **understood right away** what he had to do. He plays online games himself, so he's used to games like this.
+- He **understood right away** what he had to do. He plays online games himself, so he's used to online games like this.
 - On the choice screen, he moved the cursor around to **see the animations** first.
 - He found everything **quickly**, and he also read the **instruction signs** when they appeared, quietly out loud.
 

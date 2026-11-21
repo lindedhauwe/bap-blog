@@ -98,6 +98,21 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 @media (max-width: 600px) {
   .prose .photo-note, .prose .photos { grid-template-columns: 1fr; }
 }
+/* <div class="carousel">: small photos side by side (one image per paragraph); scroll or swipe sideways for more. */
+.prose .carousel {
+  display: flex;
+  gap: .75rem;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  margin: 2rem 0;
+  padding-bottom: .5rem;
+  scrollbar-width: thin;
+}
+.prose .carousel > p { flex: none; margin: 0; scroll-snap-align: start; }
+.prose .carousel img { display: block; height: 260px; width: auto; max-width: none; }
+@media (max-width: 600px) {
+  .prose .carousel img { height: 200px; }
+}
 /* Videos: put the file in public/files/ and use <video controls src="../../files/name.mp4"> */
 .prose video { display: block; width: 100%; height: auto; margin: 2rem 0; border-radius: var(--radius); background: #000; }
 /* <div class="flipbook">: pages (one image per paragraph) you can leaf through.

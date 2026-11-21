@@ -9,7 +9,7 @@ olr: [OLR03-I-1, OLR02-I-1]
 ## What did we do?
  
 We started by creating the assets for the history genre, building on our styleboard (see [developing the visual style](../2026-11-11-style-initiation/)). The core idea was already in place: the scene is a large sandbox in which players dig to uncover objects. The first two images below show the progress of our main screen. The image under that shows what the scene looks like when player 2 brushes the sand off an object.
- 
+
 ![First version of the history scene](./progress01.png)
  
 ![A newer version of the same scene](./progress03.png)
@@ -28,7 +28,9 @@ We brainstormed which objects players should be able to dig up. For each major t
 ![All the objects players can dig up](./objects01.png)
  
 We used the following references:
- 
+
+<div class="carousel" aria-label="References for the T-rex skull">
+
 ![Reference for the King Arthur sword](./king-arthur-sword-reference01.png)
  
 ![Reference for the T-rex skull](./trex-skull-reference01.png)
@@ -42,6 +44,8 @@ We used the following references:
 ![Reference for the sarcophagus](./sarcofaag-reference01.png)
  
 ![Second reference for the sarcophagus](./sarcofaag-reference02.png)
+
+</div>
  
 We also designed a few "wrong" objects, such as a dirty sock and a turd. These add an element of surprise and humour to the digging.
  
@@ -55,29 +59,41 @@ The background initially felt quite empty, so we added well-known elements from 
  
 ![The scene with the new background](./background01.png)
  
+<div class="carousel" aria-label="References for the T-rex skull">
+
 ![Reference for the flying dinosaur](./flying-dino-reference01.png)
  
 ![Second reference for the flying dinosaur](./flying-dino-reference02.png)
+
+</div>
  
 ### The book
  
 Every minigame ends with a book that opens to show the recommended reads. In the history game, players first have to dig up this book once they have found all the other objects.
  
 ![The book players dig up at the end](./book.png)
- 
+
+<div class="carousel" aria-label="References for the T-rex skull">
+
 ![Reference for the book](./book-reference01.png)
  
 ![Reference for the paper and the quill](./book-reference02.png)
+
+</div>
  
 ### The controllers
  
 The two controllers are a trowel and a brush. To make it clear who is playing with which tool, we placed a small "speler 1" and "speler 2" label next to each one.
  
 ![The trowel and brush controllers](./controllers.png)
+
+<div class="carousel" aria-label="References for the T-rex skull">
  
 ![Reference for the trowel](./trowel-reference01.png)
  
 ![Reference for the brush](./brush-reference01.png)
+
+</div>
  
 ### Title screen and tutorial
  

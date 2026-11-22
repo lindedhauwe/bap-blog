@@ -3,6 +3,7 @@ title: Designing the history minigame
 date: 2026-11-21
 description: How we designed the first assets for the history genre.
 tags: [design]
+authors: [naomi]
 olr: [OLR03-I-1, OLR02-I-1]
 ---
 

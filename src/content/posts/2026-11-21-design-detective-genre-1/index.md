@@ -1,16 +1,14 @@
 ---
-# Copy this file to a new folder, e.g. src/content/posts/2026-11-05-user-interviews/index.md
-# Put images in the same folder and reference them as ./image.jpg
-title: Short, descriptive title
-date: 2026-11-11
-description: One sentence that sums up the post.
+title: Designing the detective minigame
+date: 2026-11-21
+description: How we designed the first assets for the detective genre.
 tags: [design] # one or more of: ux, design, development, feedback
-olr: [OLR01-I-1] # learning outcomes, see the list on /olr/ (src/consts.ts)
-# authors: [linde, naomi] # only if not all of us worked on it (ids from src/data/team.json)
+olr: [OLR03-I-1, OLR02-I-1] # learning outcomes, see the list on /olr/ (src/consts.ts)
+authors: [naomi]
 # cover: ./cover.jpg
 # coverAlt: What's in the cover image
-# ai: >-   # use >- so colons in your text don't break things
-#   What did we ask AI, what did we keep, what did we reject and why?
+ai: >-   # use >- so colons in your text don't break things
+  We used Illustrator's AI image generation twice, for the two villains that are hard to find references for online: the wolf standing on two legs and captain Hook in one specific pose. We asked for these poses so we could see the right body shape and proportions. We kept them only as a reference to draw over, not as final art. We didn't use AI for the other assets.
 ---
 
 so here the idea is to have a lot of book shelves to represent a library where the guilty roam around and player 2 has to catch these and then player 1 has to find clues around the room. so we started with making book shelves (bookshelves01) and then i enhanced them a bit by adding a second bookshef and adding more books and random items (bookshelves02). and i used this reference for the bookshelves (bookshelves-reference)

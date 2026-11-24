@@ -17,7 +17,7 @@ We already knew beforehand that the Nunchuk wouldn't work the same way as a sepa
 
 We used:
 
-- our full **ESP32-S3 setup** from the accelerometer test
+- our full **ESP32-S3 setup** from the previous accelerometer test
 - an **Adafruit Wii Nunchuck Breakout Adapter** (4836)
 - a **Wii Nunchuk**
 - a **STEMMA QT cable** with one small plug and four loose pins

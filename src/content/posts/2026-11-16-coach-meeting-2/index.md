@@ -1,7 +1,7 @@
 ---
-title: "Coach meeting 3 with Simon"
-date: 2026-11-23
-description: Our third meeting with our coach Simon Vanherweghe.
+title: "Coach meeting 2 with Simon"
+date: 2026-11-16
+description: Our second meeting with our coach Simon Vanherweghe.
 tags: [feedback]
 olr: [OLR06-I-1, OLR09-I-1]
 ---

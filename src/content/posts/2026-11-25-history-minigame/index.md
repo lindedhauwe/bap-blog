@@ -7,7 +7,6 @@ olr: [OLR04-I-2, OLR02-I-1]
 authors: [femke]
 ai: >-
   AI played a big role in building this game. Claude (AI) in VS Code set up the Phaser project, turned my designs and example videos into working code, tested the game itself in an automated browser, found and fixed problems, and managed our Git branches. The game concept, all the visuals in Figma, the example videos, the testing and the feedback came from me. Claude also turned my notes into this English post.
-draft: true
 ---
 
 ## Where we started
@@ -82,8 +81,3 @@ The sign hangs at the top, with new cards and a "Press a button" button.
 
 - **AI as the one carrying it out.** The AI was a fast programmer and tester, but the design choices and the feel of the game came from me.
 - **Small steps.** Feedback worked best in small steps, with a screenshot or a design to go with it.
-
-
-## Next steps
-
-<!-- To fill in -->

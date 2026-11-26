@@ -106,6 +106,6 @@ Finally, we designed a title screen and a short tutorial so players immediately 
  
 ## Next steps
  
-- Test the history game with the new assets.
+- Code the history minigame.
 - Apply the same approach to the other genres.
 - Keep refining the scene and objects based on feedback.

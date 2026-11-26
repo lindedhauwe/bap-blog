@@ -68,6 +68,12 @@ The AI worked out from my demo video what had to happen: digging with the shovel
 
 The sign hangs at the top, with new cards and a "Press a button" button.
 
+## The result
+
+This is what the history minigame looks like now, from the Kaboeko start screen to opening the book at the end:
+
+<video controls playsinline preload="metadata" src="../../videos/history-game-recording.mp4" aria-label="Screen recording of a full round of the history minigame"></video>
+
 ## Problems we solved
 
 - **A blurry game.** My Mac screen has twice as many pixels, so the game was stretched. The fix: draw everything at double resolution.

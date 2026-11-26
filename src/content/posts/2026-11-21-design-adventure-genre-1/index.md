@@ -32,6 +32,8 @@ We used the following references:
 
 ![Reference for the island](./island-reference01.png)
 
+![Reference for the island](./island-reference02.png)
+
 ![Reference for the rocks](./rocks-reference01.png)
 
 ![Second reference for the rocks](./rocks-reference02.png)

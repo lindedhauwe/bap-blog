@@ -82,4 +82,4 @@ The whole comedy game is in `main`, together with the support for two controller
 
 ## What I learned
 
-Asking the AI to **ask questions first**, instead of guessing, made a big difference. Even so, the first version had a layout and texts the AI came up with itself. Only after I gave my own sketches and removed everything it had added did the game really look like ours. Many short rounds of feedback in one day worked better than one long brief.
+Asking the AI to **ask questions first**, instead of guessing, made a big difference. Even so, the first version had a layout and texts the AI came up with itself. Only after I gave my own sketches and removed everything it had added did the game really look like ours. Many rounds of feedback in one day worked better than one long brief.

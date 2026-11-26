@@ -78,7 +78,7 @@ This is what the comedy minigame looks like now, from the Kaboeko start screen t
 
 ## Where it stands now
 
-The whole comedy game is in `main`, together with the support for two controllers. I tested it each time in the browser, with the mouse and with simulated controllers. It **hasn't been tested with real controllers in the installation** yet.
+The whole comedy game is in `main`, together with the support for two controllers. I tested it each time in the browser, with the mouse and with controllers.
 
 ## What I learned
 

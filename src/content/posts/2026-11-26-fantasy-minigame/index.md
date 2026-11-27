@@ -1,7 +1,7 @@
 ---
 title: Fantasy minigame
 date: 2026-11-26
-description: How I built the fantasy minigame in Phaser 4, a witch battle for two players where one player protects with an umbrella and the other casts spells from famous books, with AI as a fast programmer and tester.
+description: How I built the fantasy minigame in Phaser 4, a witch battle for two players where one player protects with an umbrella and the other casts spells from famous books, with AI as a fast programmer.
 tags: [development]
 olr: [OLR04-I-2, OLR02-I-1]
 authors: [linde]
@@ -23,7 +23,7 @@ I built this game together with **Claude (AI)** in VS Code. We divided the work 
 | Choosing the spells and attacks from books: *Harry Potter*, *The Wizard of Oz*, *Percy Jackson*, *Asterix* | Recognising the spell movements the wizard draws with the wand |
 | All the visuals in Figma: background, witch poses, umbrella, wand, potions, monkey, deer, pen and sword (see [designing the fantasy minigame](../2026-11-24-design-fantasy-genre-1/)) | Testing the game itself in an automated browser: letting it play and taking screenshots |
 | A design of the game screen with the health bar | Finding and fixing problems |
-| Testing and adjusting: "the props are too big", "the deer shouldn't hop", "the dots look strange" | Managing Git: commits, pulling in `main` and merging |
+| Testing and adjusting: "the props are too big", "the deer shouldn't hop", "the dots look strange" | Adjusting the game based on my feedback |
 
 ## Timeline
 
@@ -65,7 +65,7 @@ The background, the witch in four poses, the umbrella, the wand and the props we
 
 This is the fantasy minigame now, from the genre screen to opening the book at the end:
 
-<video controls playsinline preload="metadata" src="../../videos/fantasy-game-recording.mp4" aria-label="Screen recording of a full round of the fantasy minigame"></video>
+<video controls muted playsinline preload="metadata" src="../../videos/fantasy-game-recording.mp4" aria-label="Screen recording of a full round of the fantasy minigame"></video>
 
 ## How the code works
 
